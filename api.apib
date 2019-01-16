@@ -7,53 +7,53 @@ A Feira API
 # Data Structures
 
 ## Feira Request (object)
-+ nome: John (string, required) - Feira name
-+ registro: Doe (string, required) - Feira's registro in PMSP organ 
++ nome: PRACA SANTA HELENA (string, required) - Feira name
++ registro: 4003-7 (string, required) - Feira's registro in PMSP organ 
 + long: `-46550164` (string, required) - Longitude
 + lat: `-23558733` (string, required) - Latitude
 + setcens: 355030885000091 (string, required) - Sensitive sector
 + areap: 02236686056 (string, required) - Pondered area
-+ logradouro: Av Barroso (string, required) - Feira common area
++ logradouro: AV MONS AGNELO (string, required) - Feira common area
 + number: 766 (string, required) - Feira number
-+ referencia: Ao lado do Zé  (string, optional) - Feira reference point
-+ distrito: 34 (string, required) - Distrito ID
-+ sub_pref: 11 (string, required) - Subprefeitura ID
-+ sub_regiao: 11 (string, required) - SubRegiao ID
-+ bairro: 99 (string, required) - Bairro ID
++ referencia: TV AV DEP EMILIO CARLOS (string, optional) - Feira reference point
++ distrito_id: 34 (string, required) - Distrito ID
++ sub_pref_id: 11 (string, required) - Subprefeitura ID
++ sub_regiao_id: 11 (string, required) - SubRegiao ID
++ bairro_id: 99 (string, required) - Bairro ID
 
 ## Feira Response (object)
-+ id: 555 (number, fixed) - Unique identifier
-+ nome: John (string, required) - Feira name
-+ registro: Doe (string, fixed) - Feira's registro in PMSP organ 
++ id: 433(number, fixed) - Unique identifier
++ nome: PRACA SANTA HELENA (string, required) - Feira name
++ registro: 4003-7 (string, fixed) - Feira's registro in PMSP organ 
 + long: `-46550164` (string, required) - Longitude
 + lat: `-23558733` (string, required) - Latitude
 + setcens: 355030885000091 (string, required) - Sensitive sector
 + areap: 02236686056 (string, required) - Pondered area
-+ logradouro: Av Barroso (string, required) - Feira common area
++ logradouro: AV MONS AGNELO (string, required) - Feira common area
 + number: 766 (string, required) - Feira number
-+ referencia: Ao lado do Zé  (string, optional) - Feira reference point
-+ distrito: 34 (string, required) - Distrito ID
-+ sub_pref: 11 (string, required) - Subprefeitura ID
-+ sub_regiao: 11 (string, required) - SubRegiao ID
-+ bairro: 99 (string, required) - Bairro ID
++ referencia: TV AV DEP EMILIO CARLOS (string, optional) - Feira reference point
++ distrito (Distrito Response) - Feira Distrito
++ sub_pref (SubPrefeitura Response) - Feira Subprefeitura
++ sub_regiao (SubRegiao Response) - SubRegiao
++ bairro (Bairro Response) - Feira Bairro
 
 ## Distrito Response (object)
-+ nome: Asas (string, required) - Distrito name
-+ cod_dist: 999 (string, required) - Distrito codigo as for IBGE
++ nome: PENHA (string, required) - Distrito name
++ cod_dist: 60 (string, required) - Distrito codigo as for IBGE
 
 ## SubPrefeitura Response (object)
-+ nome: Asas (string, required) - SubPrefeitura name
-+ cod_sub_pref: 999 (string, required) - Sao Paulo's sub town hall code
++ nome: MOOCA (string, required) - SubPrefeitura name
++ cod_sub_pref: 25 (string, required) - Sao Paulo's sub town hall code
 
 ## Regiao Response (object)
-+ nome: Asas (string, required) - Regiao name
++ nome: Oeste (string, required) - Regiao name
 
 ## SubRegiao Response (object)
-+ nome: Asas (string, required) - SubRegiao name
-+ regiao: 999 (string, required) - Regia name
++ nome: Oeste 1 (string, required) - SubRegiao name
++ regiao (Regiao Response, required) - Regiao
 
 ## Bairro Response (object)
-+ nome: Asas (string, required) - Bairro name
++ nome: VL Zelina (string, required) - Bairro name
 
 # Feiras [/feiras]
 Feira collection
@@ -63,10 +63,10 @@ Feira collection
 List only active users
 
 + Parameters
-    + distrito: Paquetá (string, optional) - Distrito name
-    + regiao: Blanka (string, optional) - Feira's regiao
-    + nome: 37688765098 (string, optional) - Feira name
-    + bairro: 37688765098 (string, optional) - Feira bairro
+    + distrito: PENHA (string, optional) - Distrito name
+    + regiao: Oeste (string, optional) - Feira's regiao
+    + nome: PRACA SANTA HELENA (string, optional) - Feira name
+    + bairro: VL Zelina (string, optional) - Feira bairro
     + page: 1 (string, optional) - Pagination page number
     + per_page: 1 (string, optional) - Pagination itens per page
 
@@ -74,7 +74,7 @@ List only active users
     + Attributes
         +  result (array[Feira Response])
 
-## Get User [GET /{id}]
+## Get Feira [GET /{id}]
 
 + Parameters
     + id: 10928 (string, required) - Feira id
@@ -87,7 +87,7 @@ List only active users
     + Attributes
         + message: Resource not found - (string)
 
-## Create User [POST /]
+## Create Feira [POST /]
 
 + Request Create User (application/json)
     + Attributes
@@ -100,19 +100,6 @@ List only active users
 + Response 400
 
 + Response 422
-
-## Update User [PUT /{id}]
-
-+ Parameters
-    + id: 999 (string, required) - Feira id
-
-+ Request (application/json)
-    + Attributes
-        + data (Feira Request)
-
-+ Response 204
-
-+ Response 404
 
 ## Update User [PATCH /{id}]
 
@@ -127,11 +114,11 @@ List only active users
 
 + Response 404
 
-## Remove User [POST /{id}/remove]
+## Remove Feira [POST /{id}/remove]
 Logically removes a user from database
 
 + Parameters
-    + id: 5c1044f6cf88d14b4778f628 (string, required) - Feira id
+    + id: 555 (string, required) - Feira id
 
 + Response 204
 
