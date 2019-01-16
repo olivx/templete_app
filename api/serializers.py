@@ -28,7 +28,8 @@ class RegiaoSerializer(serializers.ModelSerializer):
 
 
 class SubRegiaoSerializer(serializers.ModelSerializer):
-    regiao = RegiaoSerializer()
+    regiao_id = serializers.IntegerField(write_only=True)
+    regiao = RegiaoSerializer(read_only=True)
 
     class Meta:
         model = SubRegiao
@@ -36,10 +37,15 @@ class SubRegiaoSerializer(serializers.ModelSerializer):
 
 
 class FeiraSerializer(serializers.ModelSerializer):
-    bairro = BairroSerializer()
-    distrito = DistritoSerializer()
-    sub_pref = SubPrefeituraSerializer()
-    sub_regiao = SubRegiaoSerializer()
+    bairro = BairroSerializer(read_only=True)
+    distrito = DistritoSerializer(read_only=True)
+    sub_pref = SubPrefeituraSerializer(read_only=True)
+    sub_regiao = SubRegiaoSerializer(read_only=True)
+
+    bairro_id = serializers.IntegerField(write_only=True)
+    distrito_id = serializers.IntegerField(write_only=True)
+    sub_pref_id = serializers.IntegerField(write_only=True)
+    sub_regiao_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Feira
