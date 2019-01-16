@@ -1,0 +1,140 @@
+FORMAT: 1A
+HOST: http://localhost:8000/api
+
+# Feira API
+A Feira API
+
+# Data Structures
+
+## Feira Request (object)
++ nome: John (string, required) - Feira name
++ registro: Doe (string, required) - Feira's registro in PMSP organ 
++ long: `-46550164` (string, required) - Longitude
++ lat: `-23558733` (string, required) - Latitude
++ setcens: 355030885000091 (string, required) - Sensitive sector
++ areap: 02236686056 (string, required) - Pondered area
++ logradouro: Av Barroso (string, required) - Feira common area
++ number: 766 (string, required) - Feira number
++ referencia: Ao lado do Zé  (string, optional) - Feira reference point
++ distrito: 34 (string, required) - Distrito ID
++ sub_pref: 11 (string, required) - Subprefeitura ID
++ sub_regiao: 11 (string, required) - SubRegiao ID
++ bairro: 99 (string, required) - Bairro ID
+
+## Feira Response (object)
++ id: 555 (number, fixed) - Unique identifier
++ nome: John (string, required) - Feira name
++ registro: Doe (string, fixed) - Feira's registro in PMSP organ 
++ long: `-46550164` (string, required) - Longitude
++ lat: `-23558733` (string, required) - Latitude
++ setcens: 355030885000091 (string, required) - Sensitive sector
++ areap: 02236686056 (string, required) - Pondered area
++ logradouro: Av Barroso (string, required) - Feira common area
++ number: 766 (string, required) - Feira number
++ referencia: Ao lado do Zé  (string, optional) - Feira reference point
++ distrito: 34 (string, required) - Distrito ID
++ sub_pref: 11 (string, required) - Subprefeitura ID
++ sub_regiao: 11 (string, required) - SubRegiao ID
++ bairro: 99 (string, required) - Bairro ID
+
+## Distrito Response (object)
++ nome: Asas (string, required) - Distrito name
++ cod_dist: 999 (string, required) - Distrito codigo as for IBGE
+
+## SubPrefeitura Response (object)
++ nome: Asas (string, required) - SubPrefeitura name
++ cod_sub_pref: 999 (string, required) - Sao Paulo's sub town hall code
+
+## Regiao Response (object)
++ nome: Asas (string, required) - Regiao name
+
+## SubRegiao Response (object)
++ nome: Asas (string, required) - SubRegiao name
++ regiao: 999 (string, required) - Regia name
+
+## Bairro Response (object)
++ nome: Asas (string, required) - Bairro name
+
+# Feiras [/feiras]
+Feira collection
+
+
+## List Feiras [GET /{?distrito,regiao,nome,bairro,page,per_page}]
+List only active users
+
++ Parameters
+    + distrito: Paquetá (string, optional) - Distrito name
+    + regiao: Blanka (string, optional) - Feira's regiao
+    + nome: 37688765098 (string, optional) - Feira name
+    + bairro: 37688765098 (string, optional) - Feira bairro
+    + page: 1 (string, optional) - Pagination page number
+    + per_page: 1 (string, optional) - Pagination itens per page
+
++ Response 200
+    + Attributes
+        +  result (array[Feira Response])
+
+## Get User [GET /{id}]
+
++ Parameters
+    + id: 10928 (string, required) - Feira id
+
++ Response 200
+    + Attributes
+        +  result (Feira Response)
+
++ Response 404
+    + Attributes
+        + message: Resource not found - (string)
+
+## Create User [POST /]
+
++ Request Create User (application/json)
+    + Attributes
+        +  data (Feira Request)
+
++ Response 201
+    + Attributes
+        +  result (Feira Response)
+
++ Response 400
+
++ Response 422
+
+## Update User [PUT /{id}]
+
++ Parameters
+    + id: 999 (string, required) - Feira id
+
++ Request (application/json)
+    + Attributes
+        + data (Feira Request)
+
++ Response 204
+
++ Response 404
+
+## Update User [PATCH /{id}]
+
++ Parameters
+    + id: 298 (string, required) - Feira id
+
++ Request (application/json)
+    + Attributes
+        + data (Feira Response)
+
++ Response 204
+
++ Response 404
+
+## Remove User [POST /{id}/remove]
+Logically removes a user from database
+
++ Parameters
+    + id: 5c1044f6cf88d14b4778f628 (string, required) - Feira id
+
++ Response 204
+
++ Response 404
+    + Attributes
+        + message: Resource not found - (string)
