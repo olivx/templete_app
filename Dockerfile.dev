@@ -1,4 +1,4 @@
-FROM python:3.6.8-alpine3.7
+FROM python:3.6.8-slim-stretch
 
 ENV PYTHONDONTWRITEBYTECODE='1'
 ENV GDAL_LIBRARY_PATH=/usr/lib/libgdal.so
@@ -7,16 +7,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN apk update \
-    && apk add --virtual build-deps gcc python3-dev musl-dev \
-    && apk add postgresql-dev 
-
-# RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
-#     py-gdal gdal-dev geos geos-dev
-
 RUN sh -c "pip install -r requirements_dev.txt"
-
-RUN apk del build-deps
 
 CMD ["sh", "-c", "/usr/local/bin/gunicorn --reload --access-logfile - -b 0.0.0.0:8000 feira.wsgi"]
 
