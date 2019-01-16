@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
-from api.models import Distrito, SubPrefeitura, Regiao, SubRegiao, Bairro, Feira
+from api.models import (Bairro, Distrito, Feira, Regiao, SubPrefeitura,
+                        SubRegiao)
 
 
 class BairroSerializer(serializers.ModelSerializer):

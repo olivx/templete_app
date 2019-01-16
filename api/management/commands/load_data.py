@@ -1,7 +1,8 @@
 import pandas as pd
 from django.core.management import BaseCommand
 
-from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
+from api.models import (Bairro, Distrito, Feira, Regiao, SubPrefeitura,
+                        SubRegiao)
 
 
 class Command(BaseCommand):
