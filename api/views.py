@@ -1,12 +1,14 @@
 from rest_framework import generics, viewsets
-from api.models import Distrito, SubPrefeitura, SubRegiao, Regiao, Feira, Bairro
+
 from api.exceptions import CannotPatchApiException
+from api.filters import FeiraFilterSet
+from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
 from api.serializers import (
-    DistritoSerializer,
-    SubPrefeituraSerializer,
-    RegiaoSerializer,
-    FeiraSerializer,
     BairroSerializer,
+    DistritoSerializer,
+    FeiraSerializer,
+    RegiaoSerializer,
+    SubPrefeituraSerializer,
     SubRegiaoSerializer,
 )
 
@@ -75,9 +77,12 @@ class FeiraView(viewsets.ModelViewSet):
     queryset = Feira.objects.all()
     serializer_class = FeiraSerializer
     name = "feira"
-    http_method_names = ["get", "post", "head", "options", "patch"]
+    http_method_names = ["get", "post", "head", "options", "patch", "delete"]
+    filterset_fields = ("nome", "distrito", "bairro", "sub_regiao")
+    filterset_class = FeiraFilterSets
 
     def partial_update(self, request, pk=None):
         if request.data.get("registro"):
-            raise CannotPatchApiException("Cannot patch registro field")
-        super().partial_update()
+            raise CannotPatchApiException("Cannot patch [registro] field")
+
+        return super().partial_update(request, pk)

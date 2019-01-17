@@ -3,7 +3,6 @@ from django.urls import reverse
 from model_mommy import mommy
 
 from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
-from api.serializers import FeiraSerializer
 
 
 @pytest.mark.django_db
@@ -139,14 +138,66 @@ def test_create_feira(api_client):
 
 
 @pytest.mark.django_db
+def test_query_feira_by_nome(api_client):
+    feira = mommy.make(Feira)
+
+    resp = api_client.get("%s?nome=%s" % (reverse("feira-list"), feira.nome))
+
+    assert resp.status_code == 200
+    assert resp.json()["results"][0]["nome"] == feira.nome
+
+
+@pytest.mark.django_db
+def test_query_feira_by_distrito(api_client):
+    feira = mommy.make(Feira)
+
+    resp = api_client.get(
+        "%s?distrito=%s" % (reverse("feira-list"), feira.distrito.nome)
+    )
+
+    assert resp.status_code == 200
+    assert resp.json()["results"][0]["nome"] == feira.nome
+
+
+@pytest.mark.django_db
+def test_query_feira_by_bairro(api_client):
+    feira = mommy.make(Feira)
+
+    resp = api_client.get("%s?bairro=%s" % (reverse("feira-list"), feira.bairro.nome))
+
+    assert resp.status_code == 200
+    assert resp.json()["results"][0]["nome"] == feira.nome
+
+
+@pytest.mark.django_db
+def test_query_feira_by_regiao(api_client):
+    feira = mommy.make(Feira)
+
+    resp = api_client.get(
+        "%s?regiao=%s" % (reverse("feira-list"), feira.sub_regiao.regiao.nome)
+    )
+
+    assert resp.status_code == 200
+    assert resp.json()["results"][0]["nome"] == feira.nome
+
+
+@pytest.mark.django_db
+def test_delete_feira(api_client):
+    feira = mommy.make(Feira)
+    assert len(Feira.objects.all()) == 1
+
+    resp = api_client.delete(reverse("feira-detail", args=([feira.id])))
+
+    assert resp.status_code == 204
+    assert len(Feira.objects.all()) == 0
+
+
+@pytest.mark.django_db
 def test_patch_feira(api_client):
     feira = mommy.make(Feira)
     data = {"nome": "Feira do Carlos Blanka"}
     resp = api_client.patch(reverse("feira-detail", args=([feira.id])), data=data)
 
-    import ipdb
-
-    ipdb.set_trace()
     assert resp.status_code == 200
     assert resp.json()["nome"] == data["nome"]
 
@@ -158,4 +209,14 @@ def test_cannot_patch_feira_registro(api_client):
     resp = api_client.patch(reverse("feira-detail", args=([feira.id])), data=data)
 
     assert resp.status_code == 400
-    assert resp.json() == {"detail": "Cannot patch registro field"}
+    assert resp.json() == {"detail": "Cannot patch [registro] field"}
+
+
+@pytest.mark.django_db
+def test_cannot_put_feira(api_client):
+    feira = mommy.make(Feira)
+    data = {"nome": "Feira do Carlos Blanka", "registro": "8979"}
+    resp = api_client.put(reverse("feira-detail", args=([feira.id])), data=data)
+
+    assert resp.status_code == 405
+    assert resp.json() == {"detail": 'Method "PUT" not allowed.'}
