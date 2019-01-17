@@ -7,6 +7,7 @@ class Distrito(models.Model):
 
     class Meta:
         ordering = ["-id"]
+        indexes = [models.Index(fields=["nome"], name="distrito_nome_idx")]
 
 
 class SubPrefeitura(models.Model):
@@ -22,6 +23,7 @@ class Regiao(models.Model):
 
     class Meta:
         ordering = ["-id"]
+        indexes = [models.Index(fields=["nome"], name="regiao_nome_idx")]
 
 
 class SubRegiao(models.Model):
@@ -40,6 +42,7 @@ class Bairro(models.Model):
 
     class Meta:
         ordering = ["-id"]
+        indexes = [models.Index(fields=["nome"], name="bairro_nome_idx")]
 
 
 class Feira(models.Model):
@@ -66,3 +69,4 @@ class Feira(models.Model):
 
     class Meta:
         ordering = ["-id"]
+        indexes = [models.Index(fields=["nome"], name="feira_nome_idx")]
