@@ -8,7 +8,8 @@ services:
     volumes:
       - .:/app
     working_dir: /app
-    ports: 
+    entrypoint: "./wait-for-it.sh db:5432 -s -t 60 -- ./entrypoint.sh"
+    ports:
       - 8000:8000
     networks:
       - dev

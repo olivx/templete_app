@@ -11,6 +11,6 @@ RUN groupadd -g 999 appuser && \
 
 USER appuser
 
-CMD ["sh", "-c", "/usr/local/bin/gunicorn -c gunicorn.py feira.wsgi"]
+ENTRYPOINT ["./entrypoint"]
 
 EXPOSE 8000
