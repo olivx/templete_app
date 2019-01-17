@@ -115,6 +115,50 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOG_LEVEL = os.environ["LOG_LEVEL"]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "json": {
+            "()": "pythonjsonlogger.jsonlogger.JsonFormatter",
+            "fmt": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        }
+    },
+    "handlers": {
+        "stream": {
+            "level": LOG_LEVEL,
+            "formatter": "json",
+            "class": "logging.StreamHandler",
+        },
+        "gunicorn-file-stream": {
+            "level": LOG_LEVEL,
+            "formatter": "json",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "gunicorn.log",
+            "maxBytes": 10024,
+            "backupCount": 3,
+        },
+        "app-file-stream": {
+            "level": LOG_LEVEL,
+            "formatter": "json",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "app.log",
+            "maxBytes": 10024,
+            "backupCount": 3,
+        },
+    },
+    "loggers": {
+        "django": {"handlers": ["stream", "app-file-stream"], "level": LOG_LEVEL},
+        "gunicorn": {
+            "handlers": ["stream", "gunicorn-file-stream"],
+            "level": LOG_LEVEL,
+        },
+        "feira": {"handlers": ["stream", "app-file-stream"], "level": LOG_LEVEL},
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
