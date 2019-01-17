@@ -22,7 +22,7 @@ class DistritoViewSet(viewsets.ReadOnlyModelViewSet):
 class SubPrefeituraViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = SubPrefeitura.objects.all()
     serializer_class = SubPrefeituraSerializer
-    name = "sub-prefeitura"
+    name = "subprefeitura"
 
 
 class RegiaoViewSet(viewsets.ReadOnlyModelViewSet):
@@ -34,7 +34,7 @@ class RegiaoViewSet(viewsets.ReadOnlyModelViewSet):
 class SubRegiaoViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = SubRegiao.objects.all()
     serializer_class = SubRegiaoSerializer
-    name = "sub-regiao"
+    name = "subregiao"
 
 
 class BairroViewSet(viewsets.ReadOnlyModelViewSet):

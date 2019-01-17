@@ -15,30 +15,40 @@ def test_list_distritos(api_client):
 
 
 @pytest.mark.django_db
-def test_get_distrito_by_id(api_client):
+def test_get_distrito_by_id(api_client, django_request):
     distrito = mommy.make(Distrito)
     resp = api_client.get(reverse("distrito-detail", args=([distrito.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == distrito.id
+    assert (
+        django_request.build_absolute_uri(
+            reverse("distrito-detail", args=([distrito.id]))
+        )
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
 def test_list_sub_prefeituras(api_client):
     mommy.make(SubPrefeitura, _quantity=10)
-    resp = api_client.get(reverse("sub-prefeitura-list"))
+    resp = api_client.get(reverse("subprefeitura-list"))
 
     assert resp.status_code == 200
     assert len(resp.json()["results"]) == 10
 
 
 @pytest.mark.django_db
-def test_get_sub_prefeitura_by_id(api_client):
+def test_get_sub_prefeitura_by_id(api_client, django_request):
     sub_prefeitura = mommy.make(SubPrefeitura)
-    resp = api_client.get(reverse("sub-prefeitura-detail", args=([sub_prefeitura.id])))
+    resp = api_client.get(reverse("subprefeitura-detail", args=([sub_prefeitura.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == sub_prefeitura.id
+    assert (
+        django_request.build_absolute_uri(
+            reverse("subprefeitura-detail", args=([sub_prefeitura.id]))
+        )
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
@@ -51,30 +61,38 @@ def test_list_regioes(api_client):
 
 
 @pytest.mark.django_db
-def test_get_regiao_by_id(api_client):
+def test_get_regiao_by_id(api_client, django_request):
     regiao = mommy.make(Regiao)
     resp = api_client.get(reverse("regiao-detail", args=([regiao.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == regiao.id
+    assert (
+        django_request.build_absolute_uri(reverse("regiao-detail", args=([regiao.id])))
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
 def test_list_sub_regioes(api_client):
     mommy.make(SubRegiao, _quantity=10)
-    resp = api_client.get(reverse("sub-regiao-list"))
+    resp = api_client.get(reverse("subregiao-list"))
 
     assert resp.status_code == 200
     assert len(resp.json()["results"]) == 10
 
 
 @pytest.mark.django_db
-def test_get_sub_regiao_by_id(api_client):
+def test_get_sub_regiao_by_id(api_client, django_request):
     sub_regiao = mommy.make(SubRegiao)
-    resp = api_client.get(reverse("sub-regiao-detail", args=([sub_regiao.id])))
+    resp = api_client.get(reverse("subregiao-detail", args=([sub_regiao.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == sub_regiao.id
+    assert (
+        django_request.build_absolute_uri(
+            reverse("subregiao-detail", args=([sub_regiao.id]))
+        )
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
@@ -87,12 +105,15 @@ def test_list_bairros(api_client):
 
 
 @pytest.mark.django_db
-def test_get_bairro_by_id(api_client):
+def test_get_bairro_by_id(api_client, django_request):
     bairro = mommy.make(Bairro)
     resp = api_client.get(reverse("bairro-detail", args=([bairro.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == bairro.id
+    assert (
+        django_request.build_absolute_uri(reverse("bairro-detail", args=([bairro.id])))
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
@@ -105,12 +126,15 @@ def test_list_feiras(api_client):
 
 
 @pytest.mark.django_db
-def test_get_feira_by_id(api_client):
+def test_get_feira_by_id(api_client, django_request):
     feira = mommy.make(Feira)
     resp = api_client.get(reverse("feira-detail", args=([feira.id])))
 
     assert resp.status_code == 200
-    assert resp.json()["id"] == feira.id
+    assert (
+        django_request.build_absolute_uri(reverse("feira-detail", args=([feira.id])))
+        == resp.json()["url"]
+    )
 
 
 @pytest.mark.django_db
