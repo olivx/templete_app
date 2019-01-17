@@ -6,7 +6,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN sh -c "pip install -r requirements_dev.txt"
+RUN apt update -y && apt install make -y && sh -c "pip install -r requirements_dev.txt" && apt clean -y
 
 CMD ["sh", "-c", "/usr/local/bin/gunicorn --reload --access-logfile - -b 0.0.0.0:8000 feira.wsgi"]
 
