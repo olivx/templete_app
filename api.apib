@@ -64,8 +64,8 @@ A Feira API
 Feira collection
 
 
-## List Feiras [GET /{?distrito,regiao,nome,bairro,page,per_page}]
-List only active users
+## List Feiras [GET /feiras{?distrito,regiao,nome,bairro,page,per_page}]
+List feiras
 
 + Parameters
     + distrito: PENHA (string, optional) - Distrito name
@@ -81,50 +81,45 @@ List only active users
 
 + Response 400
     + Attributes
-        + Generic Error Response
-        + Validation Error Response
+        + detail: Failed to proccess request (string) - Generic error message
+        + field: Field cannot be null (string) - Validation error message
 
 
-## Get Feira [GET /{id}]
+## Get Feira [GET /feiras/{id}]
 
 + Parameters
     + id: 10928 (string, required) - Feira id
 
 + Response 200
-    + Attributes
-        +  Feira Response
+    + Attributes (Feira Response)
 
 + Response 404
     + Attributes
         + detail: Not found - (string)
 
-## Create Feira [POST /]
+## Create Feira [POST /feiras]
 
-+ Request Create User (application/json)
-    + Attributes
-        +  Feira Request
++ Request Create Feira (application/json)
+    + Attributes (Feira Request)
 
 + Response 201
-    + Attributes
-        +  Feira Response
+    + Attributes (Feira Response)
 
 + Response 400
     + Attributes
-        + Generic Error Response
-        + Validation Error Response
+        + detail: Failed to proccess request (string) - Generic error message
+        + field: Field cannot be null (string) - Validation error message
 
-## Update User [PATCH /{id}]
+## Update Feira [PATCH /feiras/{id}]
 
 + Parameters
     + id: 298 (string, required) - Feira id
 
 + Request (application/json)
-    + Attributes
-        + Feira Response
+    + Attributes (Feira Request)
 
 + Response 201
-    + Attributes
-        + Feira Response
+    + Attributes (Feira Response)
 
 + Response 404
     + Attributes
@@ -132,10 +127,10 @@ List only active users
 
 + Response 400
     + Attributes
-        + Generic Error Response
-        + Validation Error Response
+        + detail: Failed to proccess request (string) - Generic error message
+        + field: Field cannot be null (string) - Validation error message
 
-## Remove Feira [DELETE /{id}]
+## Remove Feira [DELETE /feiras/{id}]
 Remove a feira from database
 
 + Parameters
