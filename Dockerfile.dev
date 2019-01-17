@@ -1,12 +1,16 @@
 FROM python:3.6.8-slim-stretch
 
 ENV PYTHONDONTWRITEBYTECODE='1'
+ENV SNOWBOARD_URL=https://github.com/bukalapak/snowboard/releases/download/v1.7.0/snowboard-v1.7.0.linux-amd64.tar.gz
+ENV VANADIA_URL=https://github.com/bukalapak/vanadia/releases/download/v1.1.1/vanadia-v1.1.1.linux-amd64.tar.gz
 
 COPY . /app
 
 WORKDIR /app
 
-RUN apt update -y && apt install make -y && sh -c "pip install -r requirements_dev.txt" && apt clean -y
+RUN apt update -y && apt install make wget -y && sh -c "pip install -r requirements_dev.txt" && apt clean -y
+RUN wget $SNOWBOARD_URL && tar -zxvf snowboard-v1.7.0.linux-amd64.tar.gz && chmod +x snowboard && mv snowboard /usr/local/bin && rm snowboard-v1.7.0.linux-amd64.tar.gz
+RUN wget $VANADIA_URL && tar -zxvf vanadia-v1.1.1.linux-amd64.tar.gz && chmod +x vanadia && mv vanadia /usr/local/bin && rm vanadia-v1.1.1.linux-amd64.tar.gz
 
 ENTRYPOINT ["./entrypoint.sh"]
 

@@ -81,11 +81,11 @@ List feiras
     + page: 1 (string, optional) - Pagination page number
     + per_page: 1 (string, optional) - Pagination itens per page
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes
         +  results (array[Feira Response])
 
-+ Response 400
++ Response 400 (application/json)
     + Attributes
         + detail: Failed to proccess request (string) - Generic error message
         + field: Field cannot be null (string) - Validation error message
@@ -96,10 +96,10 @@ List feiras
 + Parameters
     + id: 10928 (string, required) - Feira id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes (Feira Response)
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -108,10 +108,10 @@ List feiras
 + Request Create Feira (application/json)
     + Attributes (Feira Request)
 
-+ Response 201
++ Response 201 (application/json)
     + Attributes (Feira Response)
 
-+ Response 400
++ Response 400 (application/json)
     + Attributes
         + detail: Failed to proccess request (string) - Generic error message
         + field: Field cannot be null (string) - Validation error message
@@ -124,14 +124,14 @@ List feiras
 + Request (application/json)
     + Attributes (Feira Request)
 
-+ Response 201
++ Response 201 (application/json)
     + Attributes (Feira Response)
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
-+ Response 400
++ Response 400 (application/json)
     + Attributes
         + detail: Failed to proccess request (string) - Generic error message
         + field: Field cannot be null (string) - Validation error message
@@ -142,9 +142,9 @@ Remove a feira from database
 + Parameters
     + id: 555 (string, required) - Feira id
 
-+ Response 204
++ Response 204 (application/json)
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -153,11 +153,11 @@ Distritos collection
 
 ## List Distritos [GET /distritos]
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Distrito Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -166,11 +166,11 @@ Distritos collection
 + Parameters
     + id: 555 (string, required) - Distrito id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Distrito Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -179,11 +179,11 @@ Distritos collection
 
 ## List SubPrefeituras [GET /sub-prefeituras]
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[SubPrefeitura Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -192,11 +192,11 @@ Distritos collection
 + Parameters
     + id: 555 (string, required) - SubPrefeitura id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[SubPrefeitura Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -205,11 +205,11 @@ Bairro collection
 
 ## List Bairros [GET /bairros]
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Bairro Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -218,11 +218,11 @@ Bairro collection
 + Parameters
     + id: 555 (string, required) - Bairro id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Bairro Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -231,11 +231,11 @@ Regiao collection
 
 ## List Regioes [GET /regioes]
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Regiao Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -244,11 +244,11 @@ Regiao collection
 + Parameters
     + id: 555 (string, required) - Regiao id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[Regiao Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -257,11 +257,11 @@ SubRegiao collection
 
 ## List SubRegioes [GET /sub-regioes]
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[SubRegiao Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 
@@ -270,11 +270,11 @@ SubRegiao collection
 + Parameters
     + id: 555 (string, required) - SubRegiao id
 
-+ Response 200
++ Response 200 (application/json)
     + Attributes 
         + results (array[SubRegiao Response])
 
-+ Response 404
++ Response 404 (application/json)
     + Attributes
         + detail: Not found - (string)
 

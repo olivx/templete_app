@@ -1,0 +1,5017 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Feira API</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-okaidia.min.css" />
+    <style>
+      blockquote {
+        border-left: solid 4px #eee;
+        padding-left: 8px;
+        font-style: italic;
+        margin-left: 0;
+        padding: 8px;
+      }
+
+      .ui.micro.label {
+        font-size: .25rem;
+      }
+
+      .ui.transaction.accordion .title {
+        text-align: center;
+      }
+
+      .ui.transaction.accordion .content {
+        border-top: solid 1px #ddd !important;
+        border-bottom: solid 1px #ddd !important;
+        background-color: rgba(0,0,0,.03);
+        padding: 0.5em 1em !important;
+      }
+
+      .ui.transaction.accordion .content.active {
+        margin-top: 0.5em;
+      }
+
+      .ui.basic.label {
+        text-align: left;
+        overflow: auto;
+      }
+      
+      .ui.basic.label.request-url {
+        user-select: text;
+      }
+
+      .resource .ui.sub.header {
+        text-transform: none;
+      }
+
+      @media only screen and (min-width: 768px) {
+        .sidewrap {
+          margin-right: 2rem;
+        }
+
+        .sidenav {
+          left: 0;
+          top: 0;
+          width: inherit;
+          position: fixed !important;
+          height: 100% !important;
+          overflow-y: auto !important;
+          padding-left: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ui padded grid">
+      <div class="sidewrap four wide computer five wide tablet sixteen wide mobile column">
+        <div class="sidenav">
+          
+<div class="ui horizontal divider">
+  <a href="#introduction">Introduction</a>
+</div>
+<div class="ui fluid secondary vertical menu">
+  <a class="item" href="#introduction">Feira API</a>
+</div>
+
+
+<div class="ui accordion fluid">
+  
+    
+    <div class="title active">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group Feira</strong>
+      
+    </div>
+    <div class="content active">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-feira-list-feiras">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List Feiras</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-feira-get-feira">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get Feira</span>
+          
+        </a>
+      
+        <a class="item blue" href="#group-feira-create-feira">
+          <i class="ui blue empty circular label"></i>
+          
+            <span>Create Feira</span>
+          
+        </a>
+      
+        <a class="item violet" href="#group-feira-update-feira">
+          <i class="ui violet empty circular label"></i>
+          
+            <span>Update Feira</span>
+          
+        </a>
+      
+        <a class="item red" href="#group-feira-remove-feira">
+          <i class="ui red empty circular label"></i>
+          
+            <span>Remove Feira</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+    
+    <div class="title ">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group Distrito</strong>
+      
+    </div>
+    <div class="content ">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-distrito-list-distritos">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List Distritos</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-distrito-get-distrito">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get Distrito</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+    
+    <div class="title ">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group SubPrefeitura</strong>
+      
+    </div>
+    <div class="content ">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-subprefeitura-list-subprefeituras">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List SubPrefeituras</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-subprefeitura-get-subprefeitura">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get SubPrefeitura</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+    
+    <div class="title ">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group Bairro</strong>
+      
+    </div>
+    <div class="content ">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-bairro-list-bairros">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List Bairros</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-bairro-get-bairro">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get Bairro</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+    
+    <div class="title ">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group Regiao</strong>
+      
+    </div>
+    <div class="content ">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-regiao-list-regioes">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List Regioes</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-regiao-get-regiao">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get Regiao</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+    
+    <div class="title ">
+      <i class="dropdown icon"></i>
+      
+        <strong>Group SubRegiao</strong>
+      
+    </div>
+    <div class="content ">
+      <div class="ui fluid secondary vertical menu">
+      
+        <a class="item green" href="#group-subregiao-list-subregioes">
+          <i class="ui green empty circular label"></i>
+          
+            <span>List SubRegioes</span>
+          
+        </a>
+      
+        <a class="item green" href="#group-subregiao-get-subregiao">
+          <i class="ui green empty circular label"></i>
+          
+            <span>Get SubRegiao</span>
+          
+        </a>
+      
+      </div>
+    </div>
+    
+  
+</div>
+
+
+        </div>
+      </div>
+      <div class="eleven wide computer ten wide tablet sixteen wide mobile column">
+        
+<div class="ui hidden divider header"></div>
+<h1 class="ui huge header" id="introduction">Feira API</h1>
+<hr class="ui divider">
+<div class="description">
+  <p>A Feira API</p>
+
+</div>
+
+        <div class="ui hidden divider"></div>
+        
+
+  <div class="ui horizontal divider" >
+    
+  </div>
+  <div class="ui header center aligned">
+    <div class="ui header">
+      <div class="sub header">
+        
+      </div>
+    </div>
+  </div>
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group Feira
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>Feira collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-feira-list-feiras">
+              List Feiras
+            </h3>
+            <div class="description"><p>List feiras</p>
+</div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/feiras{?distrito,regiao,nome,bairro,page,per_page}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>distrito</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">PENHA</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Distrito name</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>regiao</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">Oeste</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira&rsquo;s regiao</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>nome</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">PRACA SANTA HELENA</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira name</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>bairro</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">VL Zelina</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira bairro</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>page</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">1</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Pagination page number</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>per_page</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">1</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Pagination itens per page</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;id&#34;: 433,
+      &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+      &#34;registro&#34;: &#34;4003&#34;,
+      &#34;long&#34;: &#34;-46550164&#34;,
+      &#34;lat&#34;: &#34;-23558733&#34;,
+      &#34;setcens&#34;: &#34;355030885000091&#34;,
+      &#34;areap&#34;: &#34;02236686056&#34;,
+      &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+      &#34;number&#34;: &#34;766&#34;,
+      &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+      &#34;distrito&#34;: {
+        &#34;url&#34;: &#34;/distritos/45&#34;,
+        &#34;nome&#34;: &#34;PENHA&#34;,
+        &#34;cod_dist&#34;: &#34;60&#34;
+      },
+      &#34;sub_pref&#34;: {
+        &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+        &#34;nome&#34;: &#34;MOOCA&#34;,
+        &#34;cod_sub_pref&#34;: &#34;25&#34;
+      },
+      &#34;sub_regiao&#34;: {
+        &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+        &#34;nome&#34;: &#34;Oeste 1&#34;,
+        &#34;regiao&#34;: {
+          &#34;url&#34;: &#34;/regioes/97&#34;,
+          &#34;nome&#34;: &#34;Oeste&#34;
+        }
+      },
+      &#34;bairro&#34;: {
+        &#34;url&#34;: &#34;/bairros/5&#34;,
+        &#34;nome&#34;: &#34;VL Zelina&#34;
+      }
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/feiras{?distrito,regiao,nome,bairro,page,per_page}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>distrito</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">PENHA</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Distrito name</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>regiao</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">Oeste</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira&rsquo;s regiao</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>nome</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">PRACA SANTA HELENA</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira name</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>bairro</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">VL Zelina</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira bairro</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>page</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">1</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Pagination page number</p>
+
+        
+      </td>
+    </tr>
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label grey" data-content="optional" data-position="top center"></i>
+      </td>
+      <td><code>per_page</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">1</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Pagination itens per page</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked  segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui  circular label">
+                      400
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Failed to proccess request&#34;,
+  &#34;field&#34;: &#34;Field cannot be null&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Generic error message&#34;
+    },
+    &#34;field&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Validation error message&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-feira-get-feira">
+              Get Feira
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">10928</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;id&#34;: 433,
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito&#34;: {
+    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;nome&#34;: &#34;PENHA&#34;,
+    &#34;cod_dist&#34;: &#34;60&#34;
+  },
+  &#34;sub_pref&#34;: {
+    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;nome&#34;: &#34;MOOCA&#34;,
+    &#34;cod_sub_pref&#34;: &#34;25&#34;
+  },
+  &#34;sub_regiao&#34;: {
+    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;nome&#34;: &#34;Oeste 1&#34;,
+    &#34;regiao&#34;: {
+      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;nome&#34;: &#34;Oeste&#34;
+    }
+  },
+  &#34;bairro&#34;: {
+    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;nome&#34;: &#34;VL Zelina&#34;
+  }
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;id&#34;: {
+      &#34;type&#34;: &#34;number&#34;,
+      &#34;enum&#34;: [
+        433
+      ],
+      &#34;description&#34;: &#34;Unique identifier&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, fixed) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito name&#34;
+        },
+        &#34;cod_dist&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito codigo as for IBGE&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_dist&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Distrito&#34;
+    },
+    &#34;sub_pref&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura name&#34;
+        },
+        &#34;cod_sub_pref&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Sao Paulo&#39;s sub town hall code&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_sub_pref&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Subprefeitura&#34;
+    },
+    &#34;sub_regiao&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao name&#34;
+        },
+        &#34;regiao&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;url&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao resource hyperlink&#34;
+            },
+            &#34;nome&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao name&#34;
+            }
+          },
+          &#34;required&#34;: [
+            &#34;url&#34;,
+            &#34;nome&#34;
+          ],
+          &#34;description&#34;: &#34;Regiao&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;regiao&#34;
+      ],
+      &#34;description&#34;: &#34;SubRegiao&#34;
+    },
+    &#34;bairro&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro name&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Bairro&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;id&#34;,
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;
+  ]
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">10928</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-feira-create-feira">
+              Create Feira
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST Create Feira
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui blue large button">
+                  <h3>POST</h3>
+                </div>
+                <a class="ui basic fluid request-url blue label">
+                  <code>http://localhost:8000/api/feiras</code>
+                </a>
+              </div>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+              
+                <div class="ui stacked segment">
+                  <div class="ui fluid transaction accordion">
+                    <div class="title">
+                      <code>application/json</code>
+                    </div>
+                    <div class="content tabbed">
+                      <div class="ui top attached tabular menu">
+                        <a data-tab="body" class="active item">BODY</a>
+                        <a data-tab="schema" class="item">SCHEMA</a>
+                      </div>
+                      <div class="ui bottom attached active tab segment" data-tab="body">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito_id&#34;: &#34;34&#34;,
+  &#34;sub_pref_id&#34;: &#34;11&#34;,
+  &#34;sub_regiao_id&#34;: &#34;11&#34;,
+  &#34;bairro_id&#34;: &#34;99&#34;
+}</code>
+                        </pre>
+                      </div>
+                      <div class="ui bottom attached tab segment" data-tab="schema">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, required) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito ID&#34;
+    },
+    &#34;sub_pref_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Subprefeitura ID&#34;
+    },
+    &#34;sub_regiao_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao ID&#34;
+    },
+    &#34;bairro_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro ID&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;,
+    &#34;distrito_id&#34;,
+    &#34;sub_pref_id&#34;,
+    &#34;sub_regiao_id&#34;,
+    &#34;bairro_id&#34;
+  ]
+}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      201
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;id&#34;: 433,
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito&#34;: {
+    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;nome&#34;: &#34;PENHA&#34;,
+    &#34;cod_dist&#34;: &#34;60&#34;
+  },
+  &#34;sub_pref&#34;: {
+    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;nome&#34;: &#34;MOOCA&#34;,
+    &#34;cod_sub_pref&#34;: &#34;25&#34;
+  },
+  &#34;sub_regiao&#34;: {
+    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;nome&#34;: &#34;Oeste 1&#34;,
+    &#34;regiao&#34;: {
+      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;nome&#34;: &#34;Oeste&#34;
+    }
+  },
+  &#34;bairro&#34;: {
+    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;nome&#34;: &#34;VL Zelina&#34;
+  }
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;id&#34;: {
+      &#34;type&#34;: &#34;number&#34;,
+      &#34;enum&#34;: [
+        433
+      ],
+      &#34;description&#34;: &#34;Unique identifier&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, fixed) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito name&#34;
+        },
+        &#34;cod_dist&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito codigo as for IBGE&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_dist&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Distrito&#34;
+    },
+    &#34;sub_pref&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura name&#34;
+        },
+        &#34;cod_sub_pref&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Sao Paulo&#39;s sub town hall code&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_sub_pref&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Subprefeitura&#34;
+    },
+    &#34;sub_regiao&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao name&#34;
+        },
+        &#34;regiao&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;url&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao resource hyperlink&#34;
+            },
+            &#34;nome&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao name&#34;
+            }
+          },
+          &#34;required&#34;: [
+            &#34;url&#34;,
+            &#34;nome&#34;
+          ],
+          &#34;description&#34;: &#34;Regiao&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;regiao&#34;
+      ],
+      &#34;description&#34;: &#34;SubRegiao&#34;
+    },
+    &#34;bairro&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro name&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Bairro&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;id&#34;,
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;
+  ]
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST Create Feira
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui blue large button">
+                  <h3>POST</h3>
+                </div>
+                <a class="ui basic fluid request-url blue label">
+                  <code>http://localhost:8000/api/feiras</code>
+                </a>
+              </div>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+              
+                <div class="ui stacked segment">
+                  <div class="ui fluid transaction accordion">
+                    <div class="title">
+                      <code>application/json</code>
+                    </div>
+                    <div class="content tabbed">
+                      <div class="ui top attached tabular menu">
+                        <a data-tab="body" class="active item">BODY</a>
+                        <a data-tab="schema" class="item">SCHEMA</a>
+                      </div>
+                      <div class="ui bottom attached active tab segment" data-tab="body">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito_id&#34;: &#34;34&#34;,
+  &#34;sub_pref_id&#34;: &#34;11&#34;,
+  &#34;sub_regiao_id&#34;: &#34;11&#34;,
+  &#34;bairro_id&#34;: &#34;99&#34;
+}</code>
+                        </pre>
+                      </div>
+                      <div class="ui bottom attached tab segment" data-tab="schema">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, required) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito ID&#34;
+    },
+    &#34;sub_pref_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Subprefeitura ID&#34;
+    },
+    &#34;sub_regiao_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao ID&#34;
+    },
+    &#34;bairro_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro ID&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;,
+    &#34;distrito_id&#34;,
+    &#34;sub_pref_id&#34;,
+    &#34;sub_regiao_id&#34;,
+    &#34;bairro_id&#34;
+  ]
+}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked  segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui  circular label">
+                      400
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Failed to proccess request&#34;,
+  &#34;field&#34;: &#34;Field cannot be null&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Generic error message&#34;
+    },
+    &#34;field&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Validation error message&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-feira-update-feira">
+              Update Feira
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui violet large button">
+                  <h3>PATCH</h3>
+                </div>
+                <a class="ui basic fluid request-url violet label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">298</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+              
+                <div class="ui stacked segment">
+                  <div class="ui fluid transaction accordion">
+                    <div class="title">
+                      <code>application/json</code>
+                    </div>
+                    <div class="content tabbed">
+                      <div class="ui top attached tabular menu">
+                        <a data-tab="body" class="active item">BODY</a>
+                        <a data-tab="schema" class="item">SCHEMA</a>
+                      </div>
+                      <div class="ui bottom attached active tab segment" data-tab="body">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito_id&#34;: &#34;34&#34;,
+  &#34;sub_pref_id&#34;: &#34;11&#34;,
+  &#34;sub_regiao_id&#34;: &#34;11&#34;,
+  &#34;bairro_id&#34;: &#34;99&#34;
+}</code>
+                        </pre>
+                      </div>
+                      <div class="ui bottom attached tab segment" data-tab="schema">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, required) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito ID&#34;
+    },
+    &#34;sub_pref_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Subprefeitura ID&#34;
+    },
+    &#34;sub_regiao_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao ID&#34;
+    },
+    &#34;bairro_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro ID&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;,
+    &#34;distrito_id&#34;,
+    &#34;sub_pref_id&#34;,
+    &#34;sub_regiao_id&#34;,
+    &#34;bairro_id&#34;
+  ]
+}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      201
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;id&#34;: 433,
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito&#34;: {
+    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;nome&#34;: &#34;PENHA&#34;,
+    &#34;cod_dist&#34;: &#34;60&#34;
+  },
+  &#34;sub_pref&#34;: {
+    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;nome&#34;: &#34;MOOCA&#34;,
+    &#34;cod_sub_pref&#34;: &#34;25&#34;
+  },
+  &#34;sub_regiao&#34;: {
+    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;nome&#34;: &#34;Oeste 1&#34;,
+    &#34;regiao&#34;: {
+      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;nome&#34;: &#34;Oeste&#34;
+    }
+  },
+  &#34;bairro&#34;: {
+    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;nome&#34;: &#34;VL Zelina&#34;
+  }
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;id&#34;: {
+      &#34;type&#34;: &#34;number&#34;,
+      &#34;enum&#34;: [
+        433
+      ],
+      &#34;description&#34;: &#34;Unique identifier&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, fixed) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito name&#34;
+        },
+        &#34;cod_dist&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Distrito codigo as for IBGE&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_dist&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Distrito&#34;
+    },
+    &#34;sub_pref&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubPrefeitura name&#34;
+        },
+        &#34;cod_sub_pref&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Sao Paulo&#39;s sub town hall code&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;cod_sub_pref&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Subprefeitura&#34;
+    },
+    &#34;sub_regiao&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;SubRegiao name&#34;
+        },
+        &#34;regiao&#34;: {
+          &#34;type&#34;: &#34;object&#34;,
+          &#34;properties&#34;: {
+            &#34;url&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao resource hyperlink&#34;
+            },
+            &#34;nome&#34;: {
+              &#34;type&#34;: &#34;string&#34;,
+              &#34;description&#34;: &#34;Regiao name&#34;
+            }
+          },
+          &#34;required&#34;: [
+            &#34;url&#34;,
+            &#34;nome&#34;
+          ],
+          &#34;description&#34;: &#34;Regiao&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;,
+        &#34;regiao&#34;
+      ],
+      &#34;description&#34;: &#34;SubRegiao&#34;
+    },
+    &#34;bairro&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Bairro name&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;
+      ],
+      &#34;description&#34;: &#34;Feira Bairro&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;id&#34;,
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;
+  ]
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui violet large button">
+                  <h3>PATCH</h3>
+                </div>
+                <a class="ui basic fluid request-url violet label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">298</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+              
+                <div class="ui stacked segment">
+                  <div class="ui fluid transaction accordion">
+                    <div class="title">
+                      <code>application/json</code>
+                    </div>
+                    <div class="content tabbed">
+                      <div class="ui top attached tabular menu">
+                        <a data-tab="body" class="active item">BODY</a>
+                        <a data-tab="schema" class="item">SCHEMA</a>
+                      </div>
+                      <div class="ui bottom attached active tab segment" data-tab="body">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito_id&#34;: &#34;34&#34;,
+  &#34;sub_pref_id&#34;: &#34;11&#34;,
+  &#34;sub_regiao_id&#34;: &#34;11&#34;,
+  &#34;bairro_id&#34;: &#34;99&#34;
+}</code>
+                        </pre>
+                      </div>
+                      <div class="ui bottom attached tab segment" data-tab="schema">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, required) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito ID&#34;
+    },
+    &#34;sub_pref_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Subprefeitura ID&#34;
+    },
+    &#34;sub_regiao_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao ID&#34;
+    },
+    &#34;bairro_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro ID&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;,
+    &#34;distrito_id&#34;,
+    &#34;sub_pref_id&#34;,
+    &#34;sub_regiao_id&#34;,
+    &#34;bairro_id&#34;
+  ]
+}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui violet large button">
+                  <h3>PATCH</h3>
+                </div>
+                <a class="ui basic fluid request-url violet label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">298</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+                
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              
+              
+                <div class="ui stacked segment">
+                  <div class="ui fluid transaction accordion">
+                    <div class="title">
+                      <code>application/json</code>
+                    </div>
+                    <div class="content tabbed">
+                      <div class="ui top attached tabular menu">
+                        <a data-tab="body" class="active item">BODY</a>
+                        <a data-tab="schema" class="item">SCHEMA</a>
+                      </div>
+                      <div class="ui bottom attached active tab segment" data-tab="body">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
+  &#34;registro&#34;: &#34;4003&#34;,
+  &#34;long&#34;: &#34;-46550164&#34;,
+  &#34;lat&#34;: &#34;-23558733&#34;,
+  &#34;setcens&#34;: &#34;355030885000091&#34;,
+  &#34;areap&#34;: &#34;02236686056&#34;,
+  &#34;logradouro&#34;: &#34;AV MONS AGNELO&#34;,
+  &#34;number&#34;: &#34;766&#34;,
+  &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
+  &#34;distrito_id&#34;: &#34;34&#34;,
+  &#34;sub_pref_id&#34;: &#34;11&#34;,
+  &#34;sub_regiao_id&#34;: &#34;11&#34;,
+  &#34;bairro_id&#34;: &#34;99&#34;
+}</code>
+                        </pre>
+                      </div>
+                      <div class="ui bottom attached tab segment" data-tab="schema">
+                        <pre style="white-space: inherit">
+                          <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira name&#34;
+    },
+    &#34;registro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;7 (string, required) - Feira&#39;s registro in PMSP organ&#34;
+    },
+    &#34;long&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Longitude&#34;
+    },
+    &#34;lat&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Latitude&#34;
+    },
+    &#34;setcens&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sensitive sector&#34;
+    },
+    &#34;areap&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Pondered area&#34;
+    },
+    &#34;logradouro&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira common area&#34;
+    },
+    &#34;number&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira number&#34;
+    },
+    &#34;referencia&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Feira reference point&#34;
+    },
+    &#34;distrito_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito ID&#34;
+    },
+    &#34;sub_pref_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Subprefeitura ID&#34;
+    },
+    &#34;sub_regiao_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao ID&#34;
+    },
+    &#34;bairro_id&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro ID&#34;
+    }
+  },
+  &#34;required&#34;: [
+    &#34;nome&#34;,
+    &#34;long&#34;,
+    &#34;lat&#34;,
+    &#34;setcens&#34;,
+    &#34;areap&#34;,
+    &#34;logradouro&#34;,
+    &#34;number&#34;,
+    &#34;distrito_id&#34;,
+    &#34;sub_pref_id&#34;,
+    &#34;sub_regiao_id&#34;,
+    &#34;bairro_id&#34;
+  ]
+}</code>
+                        </pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked  segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui  circular label">
+                      400
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Failed to proccess request&#34;,
+  &#34;field&#34;: &#34;Field cannot be null&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Generic error message&#34;
+    },
+    &#34;field&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Validation error message&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-feira-remove-feira">
+              Remove Feira
+            </h3>
+            <div class="description"><p>Remove a feira from database</p>
+</div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui red large button">
+                  <h3>DELETE</h3>
+                </div>
+                <a class="ui basic fluid request-url red label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      204
+                    </a>
+                    <code></code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-"></code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json"></code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui red large button">
+                  <h3>DELETE</h3>
+                </div>
+                <a class="ui basic fluid request-url red label">
+                  <code>http://localhost:8000/api/feiras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Feira id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group Distrito
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>Distritos collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-distrito-list-distritos">
+              List Distritos
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/distritos</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/distritos/45&#34;,
+      &#34;nome&#34;: &#34;PENHA&#34;,
+      &#34;cod_dist&#34;: &#34;60&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/distritos</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-distrito-get-distrito">
+              Get Distrito
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/distritos/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Distrito id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/distritos/45&#34;,
+      &#34;nome&#34;: &#34;PENHA&#34;,
+      &#34;cod_dist&#34;: &#34;60&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/distritos/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Distrito id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group SubPrefeitura
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>Distritos collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-subprefeitura-list-subprefeituras">
+              List SubPrefeituras
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-prefeituras</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+      &#34;nome&#34;: &#34;MOOCA&#34;,
+      &#34;cod_sub_pref&#34;: &#34;25&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-prefeituras</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-subprefeitura-get-subprefeitura">
+              Get SubPrefeitura
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-prefeituras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>SubPrefeitura id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+      &#34;nome&#34;: &#34;MOOCA&#34;,
+      &#34;cod_sub_pref&#34;: &#34;25&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-prefeituras/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>SubPrefeitura id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group Bairro
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>Bairro collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-bairro-list-bairros">
+              List Bairros
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/bairros</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/bairros/5&#34;,
+      &#34;nome&#34;: &#34;VL Zelina&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/bairros</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-bairro-get-bairro">
+              Get Bairro
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/bairros/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Bairro id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/bairros/5&#34;,
+      &#34;nome&#34;: &#34;VL Zelina&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/bairros/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Bairro id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group Regiao
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>Regiao collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-regiao-list-regioes">
+              List Regioes
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/regioes</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;nome&#34;: &#34;Oeste&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/regioes</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-regiao-get-regiao">
+              Get Regiao
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/regioes/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Regiao id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;nome&#34;: &#34;Oeste&#34;
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/regioes/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>Regiao id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+    
+      <div class="ui stacked segments">
+        <div class="ui basic segment resource">
+          <div class="ui purple huge ribbon label">
+            Group SubRegiao
+          </div>
+          <div class="ui header">
+            <div class="ui sub header">
+              <p>SubRegiao collection</p>
+
+            </div>
+          </div>
+        </div>
+
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-subregiao-list-subregioes">
+              List SubRegioes
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-regioes</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+      &#34;nome&#34;: &#34;Oeste 1&#34;,
+      &#34;regiao&#34;: {
+        &#34;url&#34;: &#34;/regioes/97&#34;,
+        &#34;nome&#34;: &#34;Oeste&#34;
+      }
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-regioes</code>
+                </a>
+              </div>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+          
+<div class="ui grey horizontal small divider header">
+  <i class="ui grey micro circular label"></i>
+  <i class="ui pink micro circular label"></i>
+  <i class="ui grey micro circular label"></i>
+</div>
+
+          <div class="ui basic segment">
+            <h3 class="ui block center aligned header" id="group-subregiao-get-subregiao">
+              Get SubRegiao
+            </h3>
+            <div class="description"></div>
+
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-regioes/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>SubRegiao id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked blue segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui blue circular label">
+                      200
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;results&#34;: [
+    {
+      &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+      &#34;nome&#34;: &#34;Oeste 1&#34;,
+      &#34;regiao&#34;: {
+        &#34;url&#34;: &#34;/regioes/97&#34;,
+        &#34;nome&#34;: &#34;Oeste&#34;
+      }
+    }
+  ]
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;results&#34;: {
+      &#34;type&#34;: &#34;array&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <h4 class="ui horizontal divider">
+                REQUEST
+              </h4>
+              <div class="description"></div>
+              <div class="fluid ui large labeled button">
+                <div class="ui green large button">
+                  <h3>GET</h3>
+                </div>
+                <a class="ui basic fluid request-url green label">
+                  <code>http://localhost:8000/api/sub-regioes/{id}</code>
+                </a>
+              </div>
+              
+                <table class="ui celled definition table">
+                  <thead>
+                    <tr>
+                      <th colspan="4">Parameters</th>
+                    </tr>
+                  <thead>
+                  <tbody>
+                    
+                      
+  
+    <tr>
+      <td class="center aligned one wide">
+        <i class="ui empty circular label black" data-content="required" data-position="top center"></i>
+      </td>
+      <td><code>id</code></td>
+      <td class="center aligned">
+        <code>string</code>
+        <code class="ui label">555</code>
+        
+      </td>
+      <td class="eight wide">
+        <p>SubRegiao id</p>
+
+        
+      </td>
+    </tr>
+  
+
+                    
+                    
+                  </tbody>
+                </table>
+              
+              
+              
+
+              <h4 class="ui horizontal divider">RESPONSE</h4>
+              <div class="description"></div>
+              
+<table class="ui celled definition table">
+  <thead>
+    <tr>
+      <th colspan="2">Headers</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+    <tr>
+      <td class="four wide">Content-Type</td>
+      <td><code>application/json</code></td>
+    </tr>
+  
+  </tbody>
+</table>
+
+              <div class="ui stacked orange segment">
+                <div class="ui fluid transaction accordion">
+                  <div class="title center aligned">
+                    <a class="ui orange circular label">
+                      404
+                    </a>
+                    <code>application/json</code>
+                  </div>
+                  <div class="content tabbed">
+                    <div class="ui top attached tabular menu">
+                      <a data-tab="body" class="active item">BODY</a>
+                      <a data-tab="schema" class="item">SCHEMA</a>
+                    </div>
+                    <div class="ui bottom attached active tab segment" data-tab="body">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;detail&#34;: &#34;Not found&#34;
+}</code>
+                      </pre>
+                    </div>
+                    <div class="ui bottom attached tab segment" data-tab="schema">
+                      <pre style="white-space: inherit">
+                        <code class="language-json">{
+  &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
+  &#34;type&#34;: &#34;object&#34;,
+  &#34;properties&#34;: {
+    &#34;detail&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;(string)&#34;
+    }
+  }
+}</code>
+                      </pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+        
+        </div>
+      <div class="ui hidden divider"></div>
+    
+  
+
+
+      </div>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/accordion.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/tab.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/transition.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/popup.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/prism.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.13.0/components/prism-json.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $('.ui.accordion').accordion({ animateChildren: false, duration: 0 });
+        $('.content.tabbed').each(function(index) {
+          $('.ui.tabular .item', $(this)).tab({ context: $(this) });
+        });
+        $('.ui.vertical.menu').on('click', '.item', function() {
+          $('.ui.vertical.menu .item').removeClass('active');
+          $(this).addClass('active');
+        });
+        $('.ui.empty.circular.label').popup();
+      });
+    </script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

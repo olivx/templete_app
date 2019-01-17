@@ -1,7 +1,8 @@
 SHELL := /bin/sh
 
-docs:
-	aglio -i api.apib -o docs.html
+doc:
+	snowboard html -o docs/api.html docs/api.apib
+	vanadia --input docs/api.apib --output docs/api.postman_collection.json
 
 clean:
 	find -regex '.*\.pyc' -exec rm {} \;

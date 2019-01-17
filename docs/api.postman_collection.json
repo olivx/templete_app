@@ -1,0 +1,385 @@
+{
+	"info": {
+		"name": "Feira API",
+		"_postman_id": "Feira API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/docs/index.html"
+	},
+	"item": [
+		{
+			"item": [
+				{
+					"name": "Group Feira",
+					"item": [
+						{
+							"name": "List Feiras",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/feiras",
+									"query": [
+										{
+											"key": "nome",
+											"value": "PRACA SANTA HELENA",
+											"description": "Feira name"
+										},
+										{
+											"key": "bairro",
+											"value": "VL Zelina",
+											"description": "Feira bairro"
+										},
+										{
+											"key": "page",
+											"value": "1",
+											"description": "Pagination page number"
+										},
+										{
+											"key": "per_page",
+											"value": "1",
+											"description": "Pagination itens per page"
+										},
+										{
+											"key": "distrito",
+											"value": "PENHA",
+											"description": "Distrito name"
+										},
+										{
+											"key": "regiao",
+											"value": "Oeste",
+											"description": "Feira's regiao"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get Feira",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/feiras/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "10928",
+											"description": "Feira id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Create Feira",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/feiras"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nome\": \"PRACA SANTA HELENA\",\n  \"registro\": \"4003\",\n  \"long\": \"-46550164\",\n  \"lat\": \"-23558733\",\n  \"setcens\": \"355030885000091\",\n  \"areap\": \"02236686056\",\n  \"logradouro\": \"AV MONS AGNELO\",\n  \"number\": \"766\",\n  \"referencia\": \"TV AV DEP EMILIO CARLOS\",\n  \"distrito_id\": \"34\",\n  \"sub_pref_id\": \"11\",\n  \"sub_regiao_id\": \"11\",\n  \"bairro_id\": \"99\"\n}"
+								}
+							}
+						},
+						{
+							"name": "Update Feira",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/feiras/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "298",
+											"description": "Feira id"
+										}
+									]
+								},
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"nome\": \"PRACA SANTA HELENA\",\n  \"registro\": \"4003\",\n  \"long\": \"-46550164\",\n  \"lat\": \"-23558733\",\n  \"setcens\": \"355030885000091\",\n  \"areap\": \"02236686056\",\n  \"logradouro\": \"AV MONS AGNELO\",\n  \"number\": \"766\",\n  \"referencia\": \"TV AV DEP EMILIO CARLOS\",\n  \"distrito_id\": \"34\",\n  \"sub_pref_id\": \"11\",\n  \"sub_regiao_id\": \"11\",\n  \"bairro_id\": \"99\"\n}"
+								}
+							}
+						},
+						{
+							"name": "Remove Feira",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/feiras/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "Feira id"
+										}
+									]
+								},
+								"method": "DELETE",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				},
+				{
+					"name": "Group Distrito",
+					"item": [
+						{
+							"name": "List Distritos",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/distritos"
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get Distrito",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/distritos/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "Distrito id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				},
+				{
+					"name": "Group SubPrefeitura",
+					"item": [
+						{
+							"name": "List SubPrefeituras",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/sub-prefeituras"
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get SubPrefeitura",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/sub-prefeituras/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "SubPrefeitura id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				},
+				{
+					"name": "Group Bairro",
+					"item": [
+						{
+							"name": "List Bairros",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/bairros"
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get Bairro",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/bairros/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "Bairro id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				},
+				{
+					"name": "Group Regiao",
+					"item": [
+						{
+							"name": "List Regioes",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/regioes"
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get Regiao",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/regioes/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "Regiao id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				},
+				{
+					"name": "Group SubRegiao",
+					"item": [
+						{
+							"name": "List SubRegioes",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/sub-regioes"
+								},
+								"method": "GET",
+								"body": {}
+							}
+						},
+						{
+							"name": "Get SubRegiao",
+							"request": {
+								"url": {
+									"protocol": "http",
+									"host": "localhost:8000",
+									"path": "/api/sub-regioes/:id",
+									"variable": [
+										{
+											"key": "id",
+											"value": "555",
+											"description": "SubRegiao id"
+										}
+									]
+								},
+								"method": "GET",
+								"body": {}
+							}
+						}
+					],
+					"request": {
+						"url": {
+							"protocol": "",
+							"host": "",
+							"path": ""
+						},
+						"body": {}
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"protocol": "",
+					"host": "",
+					"path": ""
+				},
+				"body": {}
+			}
+		}
+	]
+}
