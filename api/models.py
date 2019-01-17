@@ -53,7 +53,7 @@ class Feira(models.Model):
     setcens = models.CharField(max_length=15)
     areap = models.CharField(max_length=13)
     logradouro = models.CharField(max_length=34)
-    numero = models.CharField(max_length=5)
+    numero = models.CharField(max_length=5, default="", blank=True)
     referencia = models.CharField(max_length=24)
 
     distrito = models.ForeignKey(
