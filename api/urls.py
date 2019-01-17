@@ -1,11 +1,13 @@
 from django.urls import path
 from api import views
-from rest_framework.routers import DefaultRouter
+from api.router import CustomRouter
 
-feiras_router = DefaultRouter()
+# feiras_router = DefaultRouter()
+feiras_router = CustomRouter(api_root=views.ApiRoot)
 feiras_router.register(r"feiras", views.FeiraView, basename=views.FeiraView.name)
 
 urlpatterns = [
+    # path("", views.ApiRoot.as_view(), name=views.ApiRoot.name),
     path(
         "distritos/<int:pk>",
         views.DistritoRetrieveView.as_view(),
