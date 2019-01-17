@@ -38,21 +38,26 @@ A Feira API
 + bairro (Bairro Response) - Feira Bairro
 
 ## Distrito Response (object)
++ url: `/distritos/45` (string, required) - Distrito resource hyperlink
 + nome: PENHA (string, required) - Distrito name
 + cod_dist: 60 (string, required) - Distrito codigo as for IBGE
 
 ## SubPrefeitura Response (object)
++ url: `/sub-prefeituras/10` (string, required) - SubPrefeitura resource hyperlink
 + nome: MOOCA (string, required) - SubPrefeitura name
 + cod_sub_pref: 25 (string, required) - Sao Paulo's sub town hall code
 
-## Regiao Response (object)
+## Regiao Response (object)]
++ url: `/regioes/97` (string, required) - Regiao resource hyperlink
 + nome: Oeste (string, required) - Regiao name
 
 ## SubRegiao Response (object)
++ url: `/sub-regioes/12` (string, required) - SubRegiao resource hyperlink
 + nome: Oeste 1 (string, required) - SubRegiao name
 + regiao (Regiao Response, required) - Regiao
 
 ## Bairro Response (object)
++ url: `/bairros/5` (string, required) - Bairro resource hyperlink
 + nome: VL Zelina (string, required) - Bairro name
 
 ## Generic Error Response
@@ -60,7 +65,8 @@ A Feira API
 
 ## Validation Error Response
     + field: Field cannot be null (string) - Validation error message
-# Feiras [/feiras]
+
+# Group Feira [/feiras]
 Feira collection
 
 
@@ -141,3 +147,134 @@ Remove a feira from database
 + Response 404
     + Attributes
         + detail: Not found - (string)
+
+# Group Distrito [/distritos]
+Distritos collection
+
+## List Distritos [GET /distritos]
+
++ Response 200
+    + Attributes 
+        + results (array[Distrito Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+## Get Distrito [GET /distritos/{id}]
+
++ Parameters
+    + id: 555 (string, required) - Distrito id
+
++ Response 200
+    + Attributes 
+        + results (array[Distrito Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+# Group SubPrefeitura [/sub-prefeituras]
+Distritos collection
+
+## List SubPrefeituras [GET /sub-prefeituras]
+
++ Response 200
+    + Attributes 
+        + results (array[SubPrefeitura Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+## Get SubPrefeitura [GET /sub-prefeituras/{id}]
+
++ Parameters
+    + id: 555 (string, required) - SubPrefeitura id
+
++ Response 200
+    + Attributes 
+        + results (array[SubPrefeitura Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+# Group Bairro [/bairros]
+Bairro collection
+
+## List Bairros [GET /bairros]
+
++ Response 200
+    + Attributes 
+        + results (array[Bairro Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+## Get Bairro [GET /bairros/{id}]
+
++ Parameters
+    + id: 555 (string, required) - Bairro id
+
++ Response 200
+    + Attributes 
+        + results (array[Bairro Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+# Group Regiao [/regioes]
+Regiao collection
+
+## List Regioes [GET /regioes]
+
++ Response 200
+    + Attributes 
+        + results (array[Regiao Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+## Get Regiao [GET /regioes/{id}]
+
++ Parameters
+    + id: 555 (string, required) - Regiao id
+
++ Response 200
+    + Attributes 
+        + results (array[Regiao Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+# Group SubRegiao [/sub-regioes]
+SubRegiao collection
+
+## List SubRegioes [GET /sub-regioes]
+
++ Response 200
+    + Attributes 
+        + results (array[SubRegiao Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
+## Get SubRegiao [GET /sub-regioes/{id}]
+
++ Parameters
+    + id: 555 (string, required) - SubRegiao id
+
++ Response 200
+    + Attributes 
+        + results (array[SubRegiao Response])
+
++ Response 404
+    + Attributes
+        + detail: Not found - (string)
+
