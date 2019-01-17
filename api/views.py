@@ -79,7 +79,7 @@ class FeiraView(viewsets.ModelViewSet):
     name = "feira"
     http_method_names = ["get", "post", "head", "options", "patch", "delete"]
     filterset_fields = ("nome", "distrito", "bairro", "sub_regiao")
-    filterset_class = FeiraFilterSets
+    filterset_class = FeiraFilterSet
 
     def partial_update(self, request, pk=None):
         if request.data.get("registro"):
