@@ -55,6 +55,11 @@ A Feira API
 ## Bairro Response (object)
 + nome: VL Zelina (string, required) - Bairro name
 
+## Generic Error Response
+    + detail: Failed to proccess request (string) - Generic error message
+
+## Validation Error Response
+    + field: Field cannot be null (string) - Validation error message
 # Feiras [/feiras]
 Feira collection
 
@@ -72,7 +77,13 @@ List only active users
 
 + Response 200
     + Attributes
-        +  result (array[Feira Response])
+        +  results (array[Feira Response])
+
++ Response 400
+    + Attributes
+        + Generic Error Response
+        + Validation Error Response
+
 
 ## Get Feira [GET /{id}]
 
@@ -81,7 +92,7 @@ List only active users
 
 + Response 200
     + Attributes
-        +  result (Feira Response)
+        +  Feira Response
 
 + Response 404
     + Attributes
@@ -91,15 +102,16 @@ List only active users
 
 + Request Create User (application/json)
     + Attributes
-        +  data (Feira Request)
+        +  Feira Request
 
 + Response 201
     + Attributes
-        +  result (Feira Response)
+        +  Feira Response
 
 + Response 400
-
-+ Response 422
+    + Attributes
+        + Generic Error Response
+        + Validation Error Response
 
 ## Update User [PATCH /{id}]
 
@@ -108,11 +120,18 @@ List only active users
 
 + Request (application/json)
     + Attributes
-        + data (Feira Response)
+        + Feira Response
 
-+ Response 204
++ Response 201
+    + Attributes
+        + Feira Response
 
 + Response 404
+
++ Response 400
+    + Attributes
+        + Generic Error Response
+        + Validation Error Response
 
 ## Remove Feira [POST /{id}/remove]
 Logically removes a user from database
