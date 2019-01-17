@@ -5,14 +5,23 @@ class Distrito(models.Model):
     nome = models.CharField(max_length=18)
     cod_dist = models.CharField(max_length=9, unique=True)
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class SubPrefeitura(models.Model):
     nome = models.CharField(max_length=25)
     cod_sub_pref = models.CharField(max_length=2, unique=True)
 
+    class Meta:
+        ordering = ["-id"]
+
 
 class Regiao(models.Model):
     nome = models.CharField(max_length=6, unique=True)
+
+    class Meta:
+        ordering = ["-id"]
 
 
 class SubRegiao(models.Model):
@@ -22,11 +31,15 @@ class SubRegiao(models.Model):
     )
 
     class Meta:
+        ordering = ["id"]
         unique_together = ("nome", "regiao")
 
 
 class Bairro(models.Model):
     nome = models.CharField(max_length=20, unique=True)
+
+    class Meta:
+        ordering = ["-id"]
 
 
 class Feira(models.Model):
@@ -50,3 +63,6 @@ class Feira(models.Model):
         SubRegiao, related_name="feiras", on_delete=models.CASCADE
     )
     bairro = models.ForeignKey(Bairro, related_name="bairro", on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ["-id"]
