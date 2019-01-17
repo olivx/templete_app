@@ -11,6 +11,6 @@ RUN groupadd -g 999 appuser && \
 
 USER appuser
 
-CMD ["sh", "-c", "/usr/local/bin/gunicorn --access-logfile - -b 0.0.0.0:8000 feira.wsgi"]
+CMD ["sh", "-c", "/usr/local/bin/gunicorn -c gunicorn.py feira.wsgi"]
 
 EXPOSE 8000
