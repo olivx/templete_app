@@ -96,7 +96,7 @@ List only active users
 
 + Response 404
     + Attributes
-        + message: Resource not found - (string)
+        + detail: Not found - (string)
 
 ## Create Feira [POST /]
 
@@ -127,6 +127,8 @@ List only active users
         + Feira Response
 
 + Response 404
+    + Attributes
+        + detail: Not found - (string)
 
 + Response 400
     + Attributes
@@ -143,4 +145,4 @@ Remove a feira from database
 
 + Response 404
     + Attributes
-        + message: Resource not found - (string)
+        + detail: Not found - (string)
