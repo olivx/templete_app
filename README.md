@@ -4,7 +4,7 @@ Uma API Restful contendo todas as "feiras abertas" de São Paulo.
 
 ### Instruções:
 
-A aplicação suporta o inject de variáveis de ambiente através de um arquivo .env no root do arquivo.
+A aplicação suporta o inject de variáveis de ambiente através de um arquivo .env no root do projeto.
 
     Variáveis de ambiente suportadas:
 
