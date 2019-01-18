@@ -19,3 +19,6 @@ lint:
 
 sort:
 	isort
+
+dump_data:
+	python manage.py load_data -f DEINFO_AB_FEIRASLIVRES_2014.csv
