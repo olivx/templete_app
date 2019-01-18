@@ -36,6 +36,7 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
 - Testes:
 
         feiras:/$ sudo docker-compose exec api make test
+        feiras:/$ sudo docker-compose exec api make test_report <-- gera relatório em htmlcov/
 
 - Formatação, lint:
 
