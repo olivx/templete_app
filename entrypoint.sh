@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "Waiting 15 seconds to be sure squadapp database is setup"
+echo "Waiting 15 seconds to be sure database is setup"
 
 sleep 15
 
