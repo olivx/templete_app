@@ -11,6 +11,9 @@ clean:
 test:
 	pytest
 
+test_report:
+	pytest --cov-report html
+
 format:
 	black .
 
