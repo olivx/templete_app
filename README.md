@@ -26,16 +26,16 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
 
 - Carregar fixtures:
 
-        feiras:/$ sudo docker-compose exec make dump_data
+        feiras:/$ sudo docker-compose exec api make dump_data
 
 - Testes:
 
-        feiras:/$ sudo docker-compose exec make test
+        feiras:/$ sudo docker-compose exec api make test
 
 - Formatação, lint:
 
-        feiras:/$ sudo docker-compose exec make lint
-        feiras:/$ sudo docker-compose exec make format
-        feiras:/$ sudo docker-compose exec make sort
+        feiras:/$ sudo docker-compose exec api make lint
+        feiras:/$ sudo docker-compose exec api make format
+        feiras:/$ sudo docker-compose exec api make sort
 
 
