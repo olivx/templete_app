@@ -223,7 +223,7 @@ def test_patch_feira(api_client):
     resp = api_client.patch(reverse("feira-detail", args=([feira.id])), data=data)
 
     assert resp.status_code == 200
-    assert resp.json()["nome"] == data["nome"]
+    assert resp.json()["nome"] == data["nome"].upper()
 
 
 @pytest.mark.django_db
