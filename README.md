@@ -17,7 +17,12 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
 - [Python 3.6 +](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/get-started)
 - [Docker-Compose](https://docs.docker.com/compose/)
-- [Documentação](./docs/api.apib)
+- [Documentação]
+
+- Documentação:
+    - [Blueprint](./docs/api.apib)
+    - [Html](./docs/api.html)
+    - [Postman](.docs/api.postman_collection.json)
 
 - Ambiente local:
 
@@ -38,4 +43,7 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
         feiras:/$ sudo docker-compose exec api make format
         feiras:/$ sudo docker-compose exec api make sort
 
+- Gerar documentação:
+
+        feiras:/$ sudo docker-compose exec api make doc
 
