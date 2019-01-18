@@ -47,6 +47,13 @@ class FeiraSerializer(serializers.HyperlinkedModelSerializer):
     sub_pref_id = serializers.IntegerField(write_only=True)
     sub_regiao_id = serializers.IntegerField(write_only=True)
 
+    def create(self, validated_data):
+        upper_case_dt = {
+            k: v.upper() for k, v in validated_data.items() if isinstance(v, str)
+        }
+        validated_data.update(upper_case_dt)
+        return Feira.objects.create(**validated_data)
+
     class Meta:
         model = Feira
         fields = "__all__"

@@ -86,7 +86,7 @@ def test_deserialize_feira(django_request):
 
 
 @pytest.mark.django_db
-def test_serialize_feira(django_request):
+def test_serialize_feira_uppercase(django_request):
     distrito = Distrito.objects.create(nome="Vila Formosa")
     sub_pref = SubPrefeitura.objects.create(nome="Vila Prudente")
     regiao = Regiao.objects.create(nome="Oeste")
@@ -97,11 +97,11 @@ def test_serialize_feira(django_request):
         lat="-23558733",
         setcens="355030885000091",
         areap="3550308005040",
-        nome="Vila Formosa",
+        nome="vila formosa",
         registro="4041-0",
-        logradouro="RUA MARAGOJIPE",
+        logradouro="rua maragojipe",
         numero="755",
-        referencia="TV Rua Pretoria",
+        referencia="tv rua pretoria",
         distrito_id=distrito.id,
         sub_pref_id=sub_pref.id,
         sub_regiao_id=sub_regiao.id,
@@ -111,4 +111,7 @@ def test_serialize_feira(django_request):
     serializer.is_valid(raise_exception=True)
     serializer.save()
 
-    assert Feira.objects.get(registro="4041-0")
+    feira = Feira.objects.get(registro="4041-0")
+    assert feira.logradouro == "RUA MARAGOJIPE"
+    assert feira.referencia == "TV RUA PRETORIA"
+    assert feira.nome == "VILA FORMOSA"

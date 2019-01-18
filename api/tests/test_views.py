@@ -139,7 +139,7 @@ def test_get_feira_by_id(api_client, django_request):
 
 @pytest.mark.django_db
 def test_create_feira(api_client):
-    feira = mommy.prepare(Feira, _save_related=True)
+    feira = mommy.prepare(Feira, registro="4041-0", _save_related=True)
     data = dict(
         nome=feira.nome,
         lat=feira.lat,
