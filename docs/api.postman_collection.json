@@ -19,6 +19,11 @@
 									"path": "/api/feiras",
 									"query": [
 										{
+											"key": "regiao",
+											"value": "Oeste",
+											"description": "Feira's regiao"
+										},
+										{
 											"key": "nome",
 											"value": "PRACA SANTA HELENA",
 											"description": "Feira name"
@@ -42,11 +47,6 @@
 											"key": "distrito",
 											"value": "PENHA",
 											"description": "Distrito name"
-										},
-										{
-											"key": "regiao",
-											"value": "Oeste",
-											"description": "Feira's regiao"
 										}
 									]
 								},
