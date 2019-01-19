@@ -22,7 +22,7 @@ A Feira API
 + bairro_id: 99 (string, required) - Bairro ID
 
 ## Feira Response (object)
-+ id: 433(number, fixed) - Unique identifier
++ url: `http://localhost:8000/api/feiras/32` (string, required) - Distrito resource hyperlink
 + nome: PRACA SANTA HELENA (string, required) - Feira name
 + registro: 4003-7 (string, fixed) - Feira's registro in PMSP organ 
 + long: `-46550164` (string, required) - Longitude
@@ -38,26 +38,26 @@ A Feira API
 + bairro (Bairro Response) - Feira Bairro
 
 ## Distrito Response (object)
-+ url: `/distritos/45` (string, required) - Distrito resource hyperlink
++ url: `http://localhost:8000/api/distritos/45` (string, required) - Distrito resource hyperlink
 + nome: PENHA (string, required) - Distrito name
 + cod_dist: 60 (string, required) - Distrito codigo as for IBGE
 
 ## SubPrefeitura Response (object)
-+ url: `/sub-prefeituras/10` (string, required) - SubPrefeitura resource hyperlink
++ url: `http://localhost:8000/api/sub-prefeituras/10` (string, required) - SubPrefeitura resource hyperlink
 + nome: MOOCA (string, required) - SubPrefeitura name
 + cod_sub_pref: 25 (string, required) - Sao Paulo's sub town hall code
 
 ## Regiao Response (object)]
-+ url: `/regioes/97` (string, required) - Regiao resource hyperlink
++ url: `http://localhost:8000/api/regioes/97` (string, required) - Regiao resource hyperlink
 + nome: Oeste (string, required) - Regiao name
 
 ## SubRegiao Response (object)
-+ url: `/sub-regioes/12` (string, required) - SubRegiao resource hyperlink
++ url: `http://localhost:8000/api/sub-regioes/12` (string, required) - SubRegiao resource hyperlink
 + nome: Oeste 1 (string, required) - SubRegiao name
 + regiao (Regiao Response, required) - Regiao
 
 ## Bairro Response (object)
-+ url: `/bairros/5` (string, required) - Bairro resource hyperlink
++ url: `http://localhost:8000/api/bairros/5` (string, required) - Bairro resource hyperlink
 + nome: VL Zelina (string, required) - Bairro name
 
 ## Generic Error Response
@@ -65,6 +65,42 @@ A Feira API
 
 ## Validation Error Response
     + field: Field cannot be null (string) - Validation error message
+
+## Paginated Feira Response
++ count: 80 (string, required) - Total resources
++ next: http://localhost:8000/feiras?page=4 (string, required) - Next page
++ previous: http://localhost:8000/feiras?page=3 (string, required) - Previous page
++ results (array[Feira Response])
+
+## Paginated Distrito Response
++ count: 80 (string, required) - Total resources
++ next: http://localhost:8000/distritos?page=4 (string, required) - Next page
++ previous: http://localhost:8000/distritos?page=3 (string, required) - Previous page
++ results (array[Distrito Response])
+
+## Paginated SubPrefeitura Response
++ count: 80 (string, required) - Total resources
++ next: `http://localhost:8000/sub-prefeituras?page=4` (string, required) - Next page
++ previous: `http://localhost:8000/sub-prefeituras?page=3` (string, required) - Previous page
++ results (array[SubPrefeitura Response])
+
+## Paginated Regiao Response
++ count: 80 (string, required) - Total resources
++ next: http://localhost:8000/regioes?page=4 (string, required) - Next page
++ previous: http://localhost:8000/regioes?page=3 (string, required) - Previous page
++ results (array[Regiao Response])
+
+## Paginated SubRegiao Response
++ count: 80 (string, required) - Total resources
++ next: `http://localhost:8000/sub-regioes?page=4` (string, required) - Next page
++ previous: `http://localhost:8000/sub-regioes?page=3` (string, required) - Previous page
++ results (array[SubRegiao Response])
+
+## Paginated Bairro Response
++ count: 80 (string, required) - Total resources
++ next: http://localhost:8000/bairros?page=4 (string, required) - Next page
++ previous: http://localhost:8000/bairros?page=3 (string, required) - Previous page
++ results (array[Bairro Response])
 
 # Group Feira [/feiras]
 Feira collection
@@ -82,8 +118,7 @@ List feiras
     + per_page: 1 (string, optional) - Pagination itens per page
 
 + Response 200 (application/json)
-    + Attributes
-        +  results (array[Feira Response])
+    + Attributes (Paginated Feira Response)
 
 + Response 400 (application/json)
     + Attributes
@@ -154,8 +189,7 @@ Distritos collection
 ## List Distritos [GET /distritos]
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Distrito Response])
+    + Attributes  (Paginated Distrito Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -167,8 +201,7 @@ Distritos collection
     + id: 555 (string, required) - Distrito id
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Distrito Response])
+    + Attributes (Distrito Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -180,8 +213,7 @@ Distritos collection
 ## List SubPrefeituras [GET /sub-prefeituras]
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[SubPrefeitura Response])
+    + Attributes (Paginated SubPrefeitura Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -193,8 +225,7 @@ Distritos collection
     + id: 555 (string, required) - SubPrefeitura id
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[SubPrefeitura Response])
+    + Attributes (SubPrefeitura Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -206,8 +237,7 @@ Bairro collection
 ## List Bairros [GET /bairros]
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Bairro Response])
+    + Attributes (Paginated Bairro Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -219,8 +249,7 @@ Bairro collection
     + id: 555 (string, required) - Bairro id
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Bairro Response])
+    + Attributes (Bairro Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -232,8 +261,7 @@ Regiao collection
 ## List Regioes [GET /regioes]
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Regiao Response])
+    + Attributes (Paginated Regiao Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -245,8 +273,7 @@ Regiao collection
     + id: 555 (string, required) - Regiao id
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[Regiao Response])
+    + Attributes (Regiao Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -258,8 +285,7 @@ SubRegiao collection
 ## List SubRegioes [GET /sub-regioes]
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[SubRegiao Response])
+    + Attributes (Paginated SubRegiao Response)
 
 + Response 404 (application/json)
     + Attributes
@@ -271,8 +297,7 @@ SubRegiao collection
     + id: 555 (string, required) - SubRegiao id
 
 + Response 200 (application/json)
-    + Attributes 
-        + results (array[SubRegiao Response])
+    + Attributes (SubRegiao Response)
 
 + Response 404 (application/json)
     + Attributes

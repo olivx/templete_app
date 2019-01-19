@@ -497,9 +497,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/feiras?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/feiras?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;id&#34;: 433,
+      &#34;url&#34;: &#34;http://localhost:8000/api/feiras/32&#34;,
       &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
       &#34;registro&#34;: &#34;4003&#34;,
       &#34;long&#34;: &#34;-46550164&#34;,
@@ -510,25 +513,25 @@
       &#34;number&#34;: &#34;766&#34;,
       &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
       &#34;distrito&#34;: {
-        &#34;url&#34;: &#34;/distritos/45&#34;,
+        &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
         &#34;nome&#34;: &#34;PENHA&#34;,
         &#34;cod_dist&#34;: &#34;60&#34;
       },
       &#34;sub_pref&#34;: {
-        &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+        &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
         &#34;nome&#34;: &#34;MOOCA&#34;,
         &#34;cod_sub_pref&#34;: &#34;25&#34;
       },
       &#34;sub_regiao&#34;: {
-        &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+        &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
         &#34;nome&#34;: &#34;Oeste 1&#34;,
         &#34;regiao&#34;: {
-          &#34;url&#34;: &#34;/regioes/97&#34;,
+          &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
           &#34;nome&#34;: &#34;Oeste&#34;
         }
       },
       &#34;bairro&#34;: {
-        &#34;url&#34;: &#34;/bairros/5&#34;,
+        &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
         &#34;nome&#34;: &#34;VL Zelina&#34;
       }
     }
@@ -542,10 +545,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -849,7 +869,7 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;id&#34;: 433,
+  &#34;url&#34;: &#34;http://localhost:8000/api/feiras/32&#34;,
   &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
   &#34;registro&#34;: &#34;4003&#34;,
   &#34;long&#34;: &#34;-46550164&#34;,
@@ -860,25 +880,25 @@
   &#34;number&#34;: &#34;766&#34;,
   &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
   &#34;distrito&#34;: {
-    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
     &#34;nome&#34;: &#34;PENHA&#34;,
     &#34;cod_dist&#34;: &#34;60&#34;
   },
   &#34;sub_pref&#34;: {
-    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
     &#34;nome&#34;: &#34;MOOCA&#34;,
     &#34;cod_sub_pref&#34;: &#34;25&#34;
   },
   &#34;sub_regiao&#34;: {
-    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
     &#34;nome&#34;: &#34;Oeste 1&#34;,
     &#34;regiao&#34;: {
-      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
       &#34;nome&#34;: &#34;Oeste&#34;
     }
   },
   &#34;bairro&#34;: {
-    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
     &#34;nome&#34;: &#34;VL Zelina&#34;
   }
 }</code>
@@ -890,12 +910,9 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;id&#34;: {
-      &#34;type&#34;: &#34;number&#34;,
-      &#34;enum&#34;: [
-        433
-      ],
-      &#34;description&#34;: &#34;Unique identifier&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
     },
     &#34;nome&#34;: {
       &#34;type&#34;: &#34;string&#34;,
@@ -1036,7 +1053,7 @@
     }
   },
   &#34;required&#34;: [
-    &#34;id&#34;,
+    &#34;url&#34;,
     &#34;nome&#34;,
     &#34;long&#34;,
     &#34;lat&#34;,
@@ -1351,7 +1368,7 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;id&#34;: 433,
+  &#34;url&#34;: &#34;http://localhost:8000/api/feiras/32&#34;,
   &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
   &#34;registro&#34;: &#34;4003&#34;,
   &#34;long&#34;: &#34;-46550164&#34;,
@@ -1362,25 +1379,25 @@
   &#34;number&#34;: &#34;766&#34;,
   &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
   &#34;distrito&#34;: {
-    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
     &#34;nome&#34;: &#34;PENHA&#34;,
     &#34;cod_dist&#34;: &#34;60&#34;
   },
   &#34;sub_pref&#34;: {
-    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
     &#34;nome&#34;: &#34;MOOCA&#34;,
     &#34;cod_sub_pref&#34;: &#34;25&#34;
   },
   &#34;sub_regiao&#34;: {
-    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
     &#34;nome&#34;: &#34;Oeste 1&#34;,
     &#34;regiao&#34;: {
-      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
       &#34;nome&#34;: &#34;Oeste&#34;
     }
   },
   &#34;bairro&#34;: {
-    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
     &#34;nome&#34;: &#34;VL Zelina&#34;
   }
 }</code>
@@ -1392,12 +1409,9 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;id&#34;: {
-      &#34;type&#34;: &#34;number&#34;,
-      &#34;enum&#34;: [
-        433
-      ],
-      &#34;description&#34;: &#34;Unique identifier&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
     },
     &#34;nome&#34;: {
       &#34;type&#34;: &#34;string&#34;,
@@ -1538,7 +1552,7 @@
     }
   },
   &#34;required&#34;: [
-    &#34;id&#34;,
+    &#34;url&#34;,
     &#34;nome&#34;,
     &#34;long&#34;,
     &#34;lat&#34;,
@@ -1984,7 +1998,7 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;id&#34;: 433,
+  &#34;url&#34;: &#34;http://localhost:8000/api/feiras/32&#34;,
   &#34;nome&#34;: &#34;PRACA SANTA HELENA&#34;,
   &#34;registro&#34;: &#34;4003&#34;,
   &#34;long&#34;: &#34;-46550164&#34;,
@@ -1995,25 +2009,25 @@
   &#34;number&#34;: &#34;766&#34;,
   &#34;referencia&#34;: &#34;TV AV DEP EMILIO CARLOS&#34;,
   &#34;distrito&#34;: {
-    &#34;url&#34;: &#34;/distritos/45&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
     &#34;nome&#34;: &#34;PENHA&#34;,
     &#34;cod_dist&#34;: &#34;60&#34;
   },
   &#34;sub_pref&#34;: {
-    &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
     &#34;nome&#34;: &#34;MOOCA&#34;,
     &#34;cod_sub_pref&#34;: &#34;25&#34;
   },
   &#34;sub_regiao&#34;: {
-    &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
     &#34;nome&#34;: &#34;Oeste 1&#34;,
     &#34;regiao&#34;: {
-      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
       &#34;nome&#34;: &#34;Oeste&#34;
     }
   },
   &#34;bairro&#34;: {
-    &#34;url&#34;: &#34;/bairros/5&#34;,
+    &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
     &#34;nome&#34;: &#34;VL Zelina&#34;
   }
 }</code>
@@ -2025,12 +2039,9 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;id&#34;: {
-      &#34;type&#34;: &#34;number&#34;,
-      &#34;enum&#34;: [
-        433
-      ],
-      &#34;description&#34;: &#34;Unique identifier&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
     },
     &#34;nome&#34;: {
       &#34;type&#34;: &#34;string&#34;,
@@ -2171,7 +2182,7 @@
     }
   },
   &#34;required&#34;: [
-    &#34;id&#34;,
+    &#34;url&#34;,
     &#34;nome&#34;,
     &#34;long&#34;,
     &#34;lat&#34;,
@@ -2960,9 +2971,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/distritos?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/distritos?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;url&#34;: &#34;/distritos/45&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
       &#34;nome&#34;: &#34;PENHA&#34;,
       &#34;cod_dist&#34;: &#34;60&#34;
     }
@@ -2976,10 +2990,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -3160,13 +3191,9 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;results&#34;: [
-    {
-      &#34;url&#34;: &#34;/distritos/45&#34;,
-      &#34;nome&#34;: &#34;PENHA&#34;,
-      &#34;cod_dist&#34;: &#34;60&#34;
-    }
-  ]
+  &#34;url&#34;: &#34;http://localhost:8000/api/distritos/45&#34;,
+  &#34;nome&#34;: &#34;PENHA&#34;,
+  &#34;cod_dist&#34;: &#34;60&#34;
 }</code>
                       </pre>
                     </div>
@@ -3176,10 +3203,24 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;results&#34;: {
-      &#34;type&#34;: &#34;array&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito resource hyperlink&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito name&#34;
+    },
+    &#34;cod_dist&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Distrito codigo as for IBGE&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;url&#34;,
+    &#34;nome&#34;,
+    &#34;cod_dist&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -3379,9 +3420,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/sub-prefeituras?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/sub-prefeituras?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
       &#34;nome&#34;: &#34;MOOCA&#34;,
       &#34;cod_sub_pref&#34;: &#34;25&#34;
     }
@@ -3395,10 +3439,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -3579,13 +3640,9 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;results&#34;: [
-    {
-      &#34;url&#34;: &#34;/sub-prefeituras/10&#34;,
-      &#34;nome&#34;: &#34;MOOCA&#34;,
-      &#34;cod_sub_pref&#34;: &#34;25&#34;
-    }
-  ]
+  &#34;url&#34;: &#34;http://localhost:8000/api/sub-prefeituras/10&#34;,
+  &#34;nome&#34;: &#34;MOOCA&#34;,
+  &#34;cod_sub_pref&#34;: &#34;25&#34;
 }</code>
                       </pre>
                     </div>
@@ -3595,10 +3652,24 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;results&#34;: {
-      &#34;type&#34;: &#34;array&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubPrefeitura resource hyperlink&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubPrefeitura name&#34;
+    },
+    &#34;cod_sub_pref&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Sao Paulo&#39;s sub town hall code&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;url&#34;,
+    &#34;nome&#34;,
+    &#34;cod_sub_pref&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -3798,9 +3869,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/bairros?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/bairros?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;url&#34;: &#34;/bairros/5&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
       &#34;nome&#34;: &#34;VL Zelina&#34;
     }
   ]
@@ -3813,10 +3887,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -3997,12 +4088,8 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;results&#34;: [
-    {
-      &#34;url&#34;: &#34;/bairros/5&#34;,
-      &#34;nome&#34;: &#34;VL Zelina&#34;
-    }
-  ]
+  &#34;url&#34;: &#34;http://localhost:8000/api/bairros/5&#34;,
+  &#34;nome&#34;: &#34;VL Zelina&#34;
 }</code>
                       </pre>
                     </div>
@@ -4012,10 +4099,19 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;results&#34;: {
-      &#34;type&#34;: &#34;array&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro resource hyperlink&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Bairro name&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;url&#34;,
+    &#34;nome&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -4215,9 +4311,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/regioes?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/regioes?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;url&#34;: &#34;/regioes/97&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
       &#34;nome&#34;: &#34;Oeste&#34;
     }
   ]
@@ -4230,10 +4329,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -4414,12 +4530,8 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;results&#34;: [
-    {
-      &#34;url&#34;: &#34;/regioes/97&#34;,
-      &#34;nome&#34;: &#34;Oeste&#34;
-    }
-  ]
+  &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
+  &#34;nome&#34;: &#34;Oeste&#34;
 }</code>
                       </pre>
                     </div>
@@ -4429,10 +4541,19 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;results&#34;: {
-      &#34;type&#34;: &#34;array&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Regiao resource hyperlink&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Regiao name&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;url&#34;,
+    &#34;nome&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -4632,12 +4753,15 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
+  &#34;count&#34;: &#34;80&#34;,
+  &#34;next&#34;: &#34;http://localhost:8000/sub-regioes?page=4&#34;,
+  &#34;previous&#34;: &#34;http://localhost:8000/sub-regioes?page=3&#34;,
   &#34;results&#34;: [
     {
-      &#34;url&#34;: &#34;/sub-regioes/12&#34;,
+      &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
       &#34;nome&#34;: &#34;Oeste 1&#34;,
       &#34;regiao&#34;: {
-        &#34;url&#34;: &#34;/regioes/97&#34;,
+        &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
         &#34;nome&#34;: &#34;Oeste&#34;
       }
     }
@@ -4651,10 +4775,27 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
+    &#34;count&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Total resources&#34;
+    },
+    &#34;next&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Next page&#34;
+    },
+    &#34;previous&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;Previous page&#34;
+    },
     &#34;results&#34;: {
       &#34;type&#34;: &#34;array&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;count&#34;,
+    &#34;next&#34;,
+    &#34;previous&#34;
+  ]
 }</code>
                       </pre>
                     </div>
@@ -4835,16 +4976,12 @@
                     <div class="ui bottom attached active tab segment" data-tab="body">
                       <pre style="white-space: inherit">
                         <code class="language-json">{
-  &#34;results&#34;: [
-    {
-      &#34;url&#34;: &#34;/sub-regioes/12&#34;,
-      &#34;nome&#34;: &#34;Oeste 1&#34;,
-      &#34;regiao&#34;: {
-        &#34;url&#34;: &#34;/regioes/97&#34;,
-        &#34;nome&#34;: &#34;Oeste&#34;
-      }
-    }
-  ]
+  &#34;url&#34;: &#34;http://localhost:8000/api/sub-regioes/12&#34;,
+  &#34;nome&#34;: &#34;Oeste 1&#34;,
+  &#34;regiao&#34;: {
+    &#34;url&#34;: &#34;http://localhost:8000/api/regioes/97&#34;,
+    &#34;nome&#34;: &#34;Oeste&#34;
+  }
 }</code>
                       </pre>
                     </div>
@@ -4854,10 +4991,38 @@
   &#34;$schema&#34;: &#34;http://json-schema.org/draft-04/schema#&#34;,
   &#34;type&#34;: &#34;object&#34;,
   &#34;properties&#34;: {
-    &#34;results&#34;: {
-      &#34;type&#34;: &#34;array&#34;
+    &#34;url&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao resource hyperlink&#34;
+    },
+    &#34;nome&#34;: {
+      &#34;type&#34;: &#34;string&#34;,
+      &#34;description&#34;: &#34;SubRegiao name&#34;
+    },
+    &#34;regiao&#34;: {
+      &#34;type&#34;: &#34;object&#34;,
+      &#34;properties&#34;: {
+        &#34;url&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Regiao resource hyperlink&#34;
+        },
+        &#34;nome&#34;: {
+          &#34;type&#34;: &#34;string&#34;,
+          &#34;description&#34;: &#34;Regiao name&#34;
+        }
+      },
+      &#34;required&#34;: [
+        &#34;url&#34;,
+        &#34;nome&#34;
+      ],
+      &#34;description&#34;: &#34;Regiao&#34;
     }
-  }
+  },
+  &#34;required&#34;: [
+    &#34;url&#34;,
+    &#34;nome&#34;,
+    &#34;regiao&#34;
+  ]
 }</code>
                       </pre>
                     </div>

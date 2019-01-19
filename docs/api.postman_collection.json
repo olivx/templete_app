@@ -19,6 +19,11 @@
 									"path": "/api/feiras",
 									"query": [
 										{
+											"key": "distrito",
+											"value": "PENHA",
+											"description": "Distrito name"
+										},
+										{
 											"key": "regiao",
 											"value": "Oeste",
 											"description": "Feira's regiao"
@@ -42,11 +47,6 @@
 											"key": "per_page",
 											"value": "1",
 											"description": "Pagination itens per page"
-										},
-										{
-											"key": "distrito",
-											"value": "PENHA",
-											"description": "Distrito name"
 										}
 									]
 								},
