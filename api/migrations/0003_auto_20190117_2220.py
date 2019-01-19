@@ -5,14 +5,12 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('api', '0002_auto_20190117_2214'),
-    ]
+    dependencies = [("api", "0002_auto_20190117_2214")]
 
     operations = [
         migrations.AlterField(
-            model_name='feira',
-            name='numero',
-            field=models.CharField(blank=True, default='', max_length=5),
-        ),
+            model_name="feira",
+            name="numero",
+            field=models.CharField(blank=True, default="", max_length=5),
+        )
     ]

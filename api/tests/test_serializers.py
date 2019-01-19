@@ -1,14 +1,10 @@
 import pytest
 
-from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
-from api.serializers import (
-    BairroSerializer,
-    DistritoSerializer,
-    FeiraSerializer,
-    RegiaoSerializer,
-    SubPrefeituraSerializer,
-    SubRegiaoSerializer,
-)
+from api.models import (Bairro, Distrito, Feira, Regiao, SubPrefeitura,
+                        SubRegiao)
+from api.serializers import (BairroSerializer, DistritoSerializer,
+                             FeiraSerializer, RegiaoSerializer,
+                             SubPrefeituraSerializer, SubRegiaoSerializer)
 
 
 @pytest.mark.django_db

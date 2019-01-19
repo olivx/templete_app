@@ -18,7 +18,7 @@ format:
 	black .
 
 lint:
-	flake8 .
+	flake8 . --max-line-length=99
 
 sort:
 	isort
