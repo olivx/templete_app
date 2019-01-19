@@ -14,7 +14,7 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
         DEBUG(opcional, default 0) - 1 ou 0
         LOG_LEVEL(opcional, default INFO) - Level do log
 
-Os logs são direcionados para stdout e /var/log/gunicorn.log e /var/log/app.log
+Os logs são direcionados para stdout e /var/log/app/gunicorn.log e /var/log/app/app.log
 
 - [Python 3.6 +](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/get-started)

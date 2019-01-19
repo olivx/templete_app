@@ -9,7 +9,7 @@ RUN sh -c "pip install -r requirements.txt"
 RUN groupadd -g 999 appuser && \
     useradd -r -u 999 -g appuser appuser
 
-RUN chown appuser /var/log
+RUN mkdir /var/log/app && chown appuser /var/log/app
 
 USER appuser
 

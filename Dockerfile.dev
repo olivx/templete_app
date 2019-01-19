@@ -24,6 +24,8 @@ RUN wget $SNOWBOARD_URL && \
     mv vanadia /usr/local/bin && \
     rm vanadia-v1.1.1.linux-amd64.tar.gz
 
+RUN mkdir /var/log/app
+
 ENTRYPOINT ["./entrypoint.sh"]
 
 EXPOSE 8000
