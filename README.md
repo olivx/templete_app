@@ -6,13 +6,15 @@ Uma API Restful contendo todas as "feiras abertas" de São Paulo.
 
 A aplicação suporta o inject de variáveis de ambiente através de um arquivo .env no root do projeto.
 
-    Variáveis de ambiente suportadas:
+    Variáveis de ambiente necessárias:
 
-        DATABASE_URL - Postgres String "postgres://user:pass@host:port/database"
-        DEBUG - 1 ou 0
-        SECRET_KEY - Controle interno do Django(Sessoes, csrf, etc)
-        LOG_LEVEL - Level do log
-        WORKERS - Número de workers gunicorn
+        DATABASE_URL(obrigatório) - Postgres String "postgres://user:pass@host:port/database"
+        SECRET_KEY(obrigatório) - Controle interno do Django(Sessoes, csrf, etc)
+        WORKERS(obrigatório) - Número de workers gunicorn
+        DEBUG(opcional, default 0) - 1 ou 0
+        LOG_LEVEL(opcional, default INFO) - Level do log
+
+Os logs são direcionados para stdout e /var/log/gunicorn.log e /var/log/app.log
 
 - [Python 3.6 +](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/get-started)
@@ -37,6 +39,7 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
 
         feiras:/$ sudo docker-compose exec api make test
         feiras:/$ sudo docker-compose exec api make test_report <-- gera relatório em htmlcov/
+        feiras:/$ sudo docker-compose exec api pytest -k"test_name" <-- roda teste específico
 
 - Formatação, lint:
 
@@ -47,4 +50,8 @@ A aplicação suporta o inject de variáveis de ambiente através de um arquivo 
 - Gerar documentação:
 
         feiras:/$ sudo docker-compose exec api make doc
+
+- Terminal interativo:
+
+        feiras:/$ sudo docker-compose exec api bash
 

@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ["SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(int(os.environ["DEBUG"]))
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = ["*"]
 
@@ -116,7 +116,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOG_LEVEL = os.environ["LOG_LEVEL"]
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 
 LOGGING = {
     "version": 1,
