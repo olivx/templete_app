@@ -19,7 +19,6 @@ Os logs são direcionados para stdout e /var/log/gunicorn.log e /var/log/app.log
 - [Python 3.6 +](https://www.python.org/downloads/)
 - [Docker](https://www.docker.com/get-started)
 - [Docker-Compose](https://docs.docker.com/compose/)
-- [Documentação]
 
 - Documentação:
     - [Blueprint](./docs/api.apib)
