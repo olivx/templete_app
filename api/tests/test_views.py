@@ -163,6 +163,28 @@ def test_create_feira(api_client):
 
 
 @pytest.mark.django_db
+def test_create_feira_required_fields(api_client):
+    data = {}
+    resp = api_client.post(reverse("feira-list"), data=data, format="json")
+
+    assert resp.status_code == 400
+    assert resp.json() == {
+        "bairro_id": ["This field is required."],
+        "distrito_id": ["This field is required."],
+        "sub_pref_id": ["This field is required."],
+        "sub_regiao_id": ["This field is required."],
+        "nome": ["This field is required."],
+        "registro": ["This field is required."],
+        "long": ["This field is required."],
+        "lat": ["This field is required."],
+        "setcens": ["This field is required."],
+        "areap": ["This field is required."],
+        "logradouro": ["This field is required."],
+        "referencia": ["This field is required."],
+    }
+
+
+@pytest.mark.django_db
 def test_query_feira_by_nome(api_client):
     feira = mommy.make(Feira)
 
