@@ -40,7 +40,9 @@ class BairroViewSet(viewsets.ReadOnlyModelViewSet):
 
 
 class FeiraView(viewsets.ModelViewSet):
-    queryset = Feira.objects.all()
+    queryset = Feira.objects.select_related(
+        "bairro", "distrito", "sub_regiao", "sub_regiao__regiao", "sub_pref"
+    ).all()
     serializer_class = FeiraSerializer
     name = "feira"
     http_method_names = ["get", "post", "head", "options", "patch", "delete"]
