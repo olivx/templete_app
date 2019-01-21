@@ -5,6 +5,9 @@ class Distrito(models.Model):
     nome = models.CharField(max_length=18)
     cod_dist = models.CharField(max_length=9, unique=True)
 
+    def __repr__(self):
+        return "Distrito <id=%s, nome=%s>" % (self.id, self.nome)
+
     class Meta:
         ordering = ["-id"]
         indexes = [models.Index(fields=["nome"], name="distrito_nome_idx")]
@@ -14,12 +17,18 @@ class SubPrefeitura(models.Model):
     nome = models.CharField(max_length=25)
     cod_sub_pref = models.CharField(max_length=2, unique=True)
 
+    def __repr__(self):
+        return "SubPrefeitura <id=%s, nome=%s>" % (self.id, self.nome)
+
     class Meta:
         ordering = ["-id"]
 
 
 class Regiao(models.Model):
     nome = models.CharField(max_length=6, unique=True)
+
+    def __repr__(self):
+        return "Regiao <id=%s, nome=%s>" % (self.id, self.nome)
 
     class Meta:
         ordering = ["-id"]
@@ -32,6 +41,9 @@ class SubRegiao(models.Model):
         Regiao, related_name="sub_regioes", on_delete=models.CASCADE
     )
 
+    def __repr__(self):
+        return "SubRegiao <id=%s, nome=%s>" % (self.id, self.nome)
+
     class Meta:
         ordering = ["id"]
         unique_together = ("nome", "regiao")
@@ -39,6 +51,9 @@ class SubRegiao(models.Model):
 
 class Bairro(models.Model):
     nome = models.CharField(max_length=20, unique=True)
+
+    def __repr__(self):
+        return "Bairro <id=%s, nome=%s>" % (self.id, self.nome)
 
     class Meta:
         ordering = ["-id"]
@@ -66,6 +81,9 @@ class Feira(models.Model):
         SubRegiao, related_name="feiras", on_delete=models.CASCADE
     )
     bairro = models.ForeignKey(Bairro, related_name="bairro", on_delete=models.CASCADE)
+
+    def __repr__(self):
+        return "Feira <id=%s, registro=%s>" % (self.id, self.registro)
 
     class Meta:
         ordering = ["-id"]
