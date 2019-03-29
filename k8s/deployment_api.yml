@@ -1,0 +1,59 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: template-app-api-deploy
+  labels:
+    name: template-app
+spec:
+  replicas: 2
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: template-app-api
+  template:
+    metadata:
+      labels:
+        app: template-app-api
+    spec:
+      containers:
+      - image: feira:1.0
+        name: template-app
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 90
+          timeoutSeconds: 10
+        readinessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+        env:
+        - name: WORKERS
+          valueFrom:
+            secretKeyRef:
+              name: template-app-api-secret
+              key: workers
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: template-app-api-secret
+              key: database-url
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: template-app-api-secret
+              key: secret-key
+        ports:
+        - containerPort: 8000
+          name: http
+      restartPolicy: Always
+      imagePullPolicy: IfNotPresent
