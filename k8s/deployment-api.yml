@@ -1,11 +1,12 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: template-app-api-deploy
+  name: template-app-api
   labels:
-    name: template-app
+    app: template-app
+    tier: backend
 spec:
-  replicas: 2
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -13,15 +14,18 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: template-app-api
+      app: template-app
+      tier: backend
   template:
     metadata:
+      name: template-app-api
       labels:
-        app: template-app-api
+        app: template-app
+        tier: backend
     spec:
       containers:
       - image: feira:1.0
-        name: template-app
+        name: template-app-api
         resources:
           requests:
             cpu: "20m"
@@ -40,20 +44,20 @@ spec:
         - name: WORKERS
           valueFrom:
             secretKeyRef:
-              name: template-app-api-secret
+              name: template-app-api
               key: workers
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
-              name: template-app-api-secret
+              name: template-app-api
               key: database-url
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: template-app-api-secret
+              name: template-app-api
               key: secret-key
         ports:
         - containerPort: 8000
           name: http
+        imagePullPolicy: Never
       restartPolicy: Always
-      imagePullPolicy: IfNotPresent

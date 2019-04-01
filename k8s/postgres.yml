@@ -1,0 +1,14 @@
+apiVersion: kubedb.com/v1alpha1
+kind: Postgres
+metadata:
+  name: template-app-postgres
+  labels:
+    app: template-app
+    tier: database
+spec:
+  version: "11.1"
+  storageType: Ephemeral
+  init:
+    scriptSource:
+      configMap:
+        name: template-app-pg-init-script

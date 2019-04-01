@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name:  template-app-api
+  labels:
+    app: template-app
+spec:
+  selector:
+    app: template-app
+    tier: backend
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  8000
+    targetPort:  8000
