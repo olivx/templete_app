@@ -1,3 +1,9 @@
+SHELL := /bin/sh
+
+doc:
+	snowboard html -o docs/api.html docs/api.apib
+	vanadia --input docs/api.apib --output docs/api.postman_collection.json
+
 clean:
 	@rm -f .coverage 2> /dev/null
 	@rm -rf .cache 2> /dev/null
@@ -17,4 +23,7 @@ lint:
 test: clean lint
 	@black --check api
 	@isort -c
-	python -m pytest template_app --cov=api,feira
+	python -m pytest --cov=api --cov=feira
+
+dump_data:
+	python manage.py load_data -f DEINFO_AB_FEIRASLIVRES_2014.csv
