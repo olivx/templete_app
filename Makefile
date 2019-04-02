@@ -23,7 +23,7 @@ lint:
 test: clean lint
 	@black --check api
 	@isort -c
-	python -m pytest --cov=api --cov=feira
+	./wait-for-it.sh db:5432 -s -t 120 -- python -m pytest --cov=api --cov=feira
 
 dump_data:
 	python manage.py load_data -f DEINFO_AB_FEIRASLIVRES_2014.csv
