@@ -1,4 +1,5 @@
 # Feira API
+### Projeto modelo para ser seguido em outros apps
 
 Uma API Restful contendo todas as "feiras abertas" de São Paulo.
 
@@ -32,25 +33,28 @@ Os logs são direcionados para stdout e /var/log/app/gunicorn.log e /var/log/app
 
 - Carregar fixtures:
 
-        feiras:/$ sudo docker-compose exec api make dump_data
+        feiras:/$ docker-compose run --entrypoint=make api dump_data
 
 - Testes:
 
-        feiras:/$ sudo docker-compose exec api make test
-        feiras:/$ sudo docker-compose exec api make test_report <-- gera relatório em htmlcov/
-        feiras:/$ sudo docker-compose exec api pytest -k"test_name" <-- roda teste específico
+        feiras:/$ docker-compose run --entrypoint=make api test
+        feiras:/$ docker-compose run --entrypoint=pytest api -k ".*textpattern" <- roda test específico
 
 - Formatação, lint:
 
-        feiras:/$ sudo docker-compose exec api make lint
-        feiras:/$ sudo docker-compose exec api make format
-        feiras:/$ sudo docker-compose exec api make sort
+        feiras:/$ docker-compose run --entrypoint=make api lint
+        feiras:/$ docker-compose run --entrypoint=make api format
+        feiras:/$ docker-compose run --entrypoint=make api sort
 
 - Gerar documentação:
 
-        feiras:/$ sudo docker-compose exec api make doc
+        feiras:/$ docker-compose run --entrypoint=make api doc
 
 - Terminal interativo:
 
-        feiras:/$ sudo docker-compose exec api bash
+        feiras:/$ docker-compose exec api bash
 
+- Desencriptar os secrets do k8s:
+[kubesec](https://github.com/shyiko/kubesec#installation) 
+
+        kubesec decrypt k8s/secret-postgres.yml -o k8s/secret-postgres.yml -- Necessário possuir a chave privada de desencriptação
