@@ -5,6 +5,7 @@ pipeline {
         DOCKER_REGISTRY_URL = 'localhost:5000'
         IMAGE_BASE_NAME = 'template_app'
         DEPLOYMENT_NAME = 'template-app-api'
+        NAMESPACE = 'default'
     }
 
     stages {
@@ -48,7 +49,7 @@ pipeline {
             steps {
                 sh 'kubectl --record deployment.apps/$DEPLOYMENT_NAME \
                             set image deployment.v1.apps/$DEPLOYMENT_NAME \
-                            template-app-api=$DOCKER_REGISTRY_URL/$IMAGE_BASE_NAME:$GIT_COMMIT'
+                            template-app-api=$DOCKER_REGISTRY_URL/$IMAGE_BASE_NAME:$GIT_COMMIT -n $NAMESPACE'
             }
         }
 
