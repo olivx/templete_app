@@ -2,11 +2,15 @@ from rest_framework import viewsets
 
 from api.exceptions import CannotPatchApiException
 from api.filters import FeiraFilterSet
-from api.models import (Bairro, Distrito, Feira, Regiao, SubPrefeitura,
-                        SubRegiao)
-from api.serializers import (BairroSerializer, DistritoSerializer,
-                             FeiraSerializer, RegiaoSerializer,
-                             SubPrefeituraSerializer, SubRegiaoSerializer)
+from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
+from api.serializers import (
+    BairroSerializer,
+    DistritoSerializer,
+    FeiraSerializer,
+    RegiaoSerializer,
+    SubPrefeituraSerializer,
+    SubRegiaoSerializer,
+)
 
 
 class DistritoViewSet(viewsets.ReadOnlyModelViewSet):

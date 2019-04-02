@@ -2,8 +2,7 @@ import pytest
 from django.urls import reverse
 from model_mommy import mommy
 
-from api.models import (Bairro, Distrito, Feira, Regiao, SubPrefeitura,
-                        SubRegiao)
+from api.models import Bairro, Distrito, Feira, Regiao, SubPrefeitura, SubRegiao
 
 
 @pytest.mark.django_db
