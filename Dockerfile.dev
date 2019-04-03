@@ -1,4 +1,4 @@
-FROM python:3.6.8-slim-stretch
+FROM python:3.7.3-slim-stretch
 
 ENV PYTHONDONTWRITEBYTECODE='1'
 ENV SNOWBOARD_URL=https://github.com/bukalapak/snowboard/releases/download/v1.7.0/snowboard-v1.7.0.linux-amd64.tar.gz
@@ -10,8 +10,9 @@ WORKDIR /app
 
 RUN apt update -y && \
     apt install make wget -y && \
-    sh -c "pip install -r requirements_dev.txt" && \
-    apt clean -y
+    apt clean -y && \
+    pip install pipenv && \
+    pipenv install --system --deploy
 
 RUN wget $SNOWBOARD_URL && \
     tar -zxvf snowboard-v1.7.0.linux-amd64.tar.gz && \
@@ -26,6 +27,6 @@ RUN wget $SNOWBOARD_URL && \
 
 RUN mkdir /var/log/app
 
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["gunicorn", "-c", "gunicorn.py", "feira.wsgi"]
 
 EXPOSE 8000

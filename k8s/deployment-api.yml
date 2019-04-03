@@ -23,8 +23,28 @@ spec:
         app: template-app
         tier: backend
     spec:
+      initContainers:
+        - name: migrations
+          image: localhost:5000/template_app:bdf3dca74d32a9c32d13607153cc8b0d14586a72
+          command: ['python', 'manage.py', 'migrate']
+          env:
+          - name: WORKERS
+            valueFrom:
+              secretKeyRef:
+                name: template-app-api
+                key: workers
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: template-app-api
+                key: database-url
+          - name: SECRET_KEY
+            valueFrom:
+              secretKeyRef:
+                name: template-app-api
+                key: secret-key 
       containers:
-      - image: feira:1.0
+      - image: localhost:5000/template_app:bdf3dca74d32a9c32d13607153cc8b0d14586a72
         name: template-app-api
         resources:
           requests:
