@@ -12,7 +12,7 @@ RUN apt update -y && \
     apt install make wget -y && \
     apt clean -y && \
     pip install pipenv && \
-    pipenv install --system --deploy
+    pipenv install --dev --system --deploy
 
 RUN wget $SNOWBOARD_URL && \
     tar -zxvf snowboard-v1.7.0.linux-amd64.tar.gz && \
