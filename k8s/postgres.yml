@@ -8,6 +8,8 @@ metadata:
 spec:
   version: "11.1"
   storageType: Ephemeral
+  databaseSecret:
+    secretName: template-app-postgres-auth
   init:
     scriptSource:
       configMap:
